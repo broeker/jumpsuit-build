@@ -19,14 +19,16 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            slogan
           }
         }
       }
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
+      <Header siteTitle={data.site.siteMetadata.title} slogan={data.site.siteMetadata.slogan} />
+
+          <div
           style={{
             margin: `0 auto`,
             maxWidth: 960,
@@ -36,9 +38,9 @@ const Layout = ({ children }) => (
         >
           <main>{children}</main>
           <footer>
-            © {new Date().getFullYear()}, Built with
+            © {new Date().getFullYear()}, Tim Broeker @
             {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            <a href="https://www.electriccitizen.com">Electric Citizen</a>
           </footer>
         </div>
       </>
