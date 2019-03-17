@@ -32,6 +32,9 @@ const blogTemplate = (props) => {
               title={blog.title}
               created={moment(blog.created).format('DD MMMM, YYYY')}
               body={blog.body}
+              category={blog.relationships.category[0].name}
+              tags={blog.relationships.tags}
+              media={blog.relationships.media.relationships.field_media_image}
           />
       </Paper>
       
@@ -54,39 +57,28 @@ export const query = graphql`
       body {
         processed
         summary
+      },
+      relationships {
+        category: field_blog_category {
+              name,
+            },
+        tags: field_tags {
+          name,
+        },
+        media: field_media {
+          relationships {
+            field_media_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 470, maxHeight: 353) {
+                  ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        },
       }
     }
   }
-`
-
-//const BlogPost = ({ data }) => (
-//    <Layout>
-//        <article>
-//            title={data.nodeBlog.title}
-//            date={moment(data.nodeBlog.created).format('DD MMMM, YYYY')}
-//            body=dangerouslySetInnerHTML={{__html: data.nodeBlog.body.processed}}
-//            <h1>{data.nodeBlog.title}</h1>
-//            <i><p className="publication-date">{moment(data.nodeBlog.created).format('DD MMMM, YYYY')}</p></i>
-//            <span dangerouslySetInnerHTML={{__html: data.nodeBlog.body.processed}}></span>
-//        </article>
-//    </Layout>
-//)
-
-
-/**
-export default Blogpost
-
-export const query = graphql`
-  query($slug: String!) {
-    nodeBlog (fields: { slug: { eq: $slug } }) {
-      title
-      created
-      changed
-      body {
-        processed
-        summary
-      }
-    }
-  }
-`
-*/
+`;

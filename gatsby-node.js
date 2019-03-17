@@ -16,6 +16,15 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
             value: slug,
         })
     }
+    if (node.internal.type === `node__page`) {
+        const slugFragment = transliteration.slugify(node.title)
+        const slug = `/page/${slugFragment}/`
+        createNodeField({
+            node,
+            name: `slug`,
+            value: slug,
+        })
+    }
 }
 
 // Implement the Gatsby API “createPages”. This is called once the
@@ -24,11 +33,6 @@ exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions
 
     return new Promise((resolve, reject) => {
-        //const blogPost = path.resolve(`src/templates/blog.js`)
-
-        //const blogIndex = path.resolve(`src/templates/blogindex.js`)
-
-        // Query for blog nodes to use in creating pages.
         resolve(
             graphql(
                 `
@@ -39,6 +43,28 @@ exports.createPages = ({ actions, graphql }) => {
                   drupal_id
                   title
                   created
+                  fields {
+                   slug 
+                  }
+                }
+              }
+            }
+            allNodePage {
+              edges {
+                node {
+                  drupal_id
+                  title
+                  created
+                  relationships {
+                    field_text {
+                    id
+                        field_text {
+                            value
+                            format
+                            processed
+                        }
+                    }
+                } 
                   fields {
                    slug 
                   }
@@ -64,35 +90,18 @@ exports.createPages = ({ actions, graphql }) => {
                       },
                    })
                 })
-
-                /**
-                // Get an array of posts from the query result
-                //const blogPosts = _.get(result, "data.allNodeBlog");
-
-                // Create the blog index pages like `/blog`, `/blog/2`, `/blog/3`, etc.
-                // The first page will have 3 items and each following page will have 10
-                // blog posts and a link to the next and previous pages.
-                paginate({
-                    createPage,
-                    items: blogPosts,
-                    component: blogIndex,
-                    perPage: 2,
-                    itemsPerFirstPage: 2,
-                    pathPrefix: "/blog"
-                });
-
-                // Create one page per blog post, with a link to the previous and next
-                // blog posts.
-                createPagePerItem({
-                    createPage,
-                    items: blogPosts,
-                    component: blogPost,
-                    itemToPath: "node.fields.slug",
-                    itemToId: "node.id"
-                });
-                */
-
-                
+                // Create pages for each blog post.
+                result.data.allNodePage.edges.forEach(({ node }) => {
+                    createPage({
+                        //component: blogTemplate,
+                        path: node.fields.slug,
+                        component: path.resolve(`./src/templates/page.js`), 
+                        context: {
+                            slug: node.fields.slug,
+                            drupal_id: node.drupal_id,
+                      },
+                   })
+                })
             })
         )
     })

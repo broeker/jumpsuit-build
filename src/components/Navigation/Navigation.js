@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import TemporaryDrawer from '../TemporaryDrawer/TemporaryDrawer'
 
+import 'typeface-open-sans';
 const styles = {
   root: {
     flexGrow: 1,
@@ -19,7 +20,29 @@ const styles = {
   },
   menuButton: {
     marginRight: '20px',
-  }
+  },
+  logo: {
+    fontFamily: 'Open Sans',
+    fontWeight: 800, 
+    color: 'white',
+    flexGrow: 1,
+   underline: 0,
+      '&:hover': {
+          color: 'black',
+      }
+  },
+    active: {
+        backgroundColor: 'rgba(255, 255, 255, 0.12)',
+    },
+      myTextStyle: {
+      
+      color: 'white',
+    textDecoration: 'none',
+        '&:hover': {
+        color: '#e8e8e8'
+
+    }
+     }
 };
 
 function Navigation(props) {
@@ -27,11 +50,14 @@ function Navigation(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="relative" color="default">
+      <AppBar position="relative" color="primary" height="160">
         <Toolbar>
-          <Typography variant="h2" className={classes.grow}>{props.siteTitle}</Typography>
+          
+            <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
+            style={{ textDecoration: 'none', fontFamily: 'Open Sans' }} to={"/"}>{props.siteTitle}</Link></Typography>
           <div className={classes.menu}>
-              <Button component={Link} to="/" className={classes.menuButton}>Home</Button>
+              <TemporaryDrawer 
+              />
           </div>
         </Toolbar>
       </AppBar>
