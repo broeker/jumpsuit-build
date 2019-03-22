@@ -55,16 +55,6 @@ exports.createPages = ({ actions, graphql }) => {
                   drupal_id
                   title
                   created
-                  relationships {
-                    field_text {
-                    id
-                        field_text {
-                            value
-                            format
-                            processed
-                        }
-                    }
-                } 
                   fields {
                    slug 
                   }

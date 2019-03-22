@@ -38,6 +38,11 @@ const theme = createMuiTheme({
     fontWeightMedium: 500,
     useNextVariants: true,
   },
+
+  darkblue: {
+    color: '#37474F',
+  },
+
 });
 
 function createPageContext() {

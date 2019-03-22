@@ -4,13 +4,15 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout'
+import Layout from '../components/Layout/Layout'
 import BlogCard from '../components/BlogCard/BlogCard';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+
+import moment from 'moment'
 
 const foobar = '#ffffff'; // #F44336
 const blu = '#29b6f6';
@@ -27,9 +29,10 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
     //backgroundImage: `url(${Image})`,
     backgroundColor: blu,
-    marginTop: theme.spacing.unit * 1,
+    marginTop: theme.spacing.unit * 10,
     color: foobar, 
   },
+
   
 });
 
@@ -46,6 +49,9 @@ const IndexPage = (props) => {
         speed racers. Also, people incarcerated in institutions that are full of life’s most dangerous
         criminals who made their own rules."<br /> <em>— Jeff Hilliard made in Los Angeles, CA</em>
         </Typography>
+
+
+
       </Paper>
               <Grid container spacing={40} className={classes.cardGrid}>
         {
@@ -57,6 +63,7 @@ const IndexPage = (props) => {
                 category={blog.relationships.category[0].name}
                 path={blog.fields.slug}
                 media={blog.relationships.media.relationships.field_media_image}
+                changed={moment(blog.changed).format('DD MMMM, YYYY')}
               />
             </Grid>
           ))
@@ -72,13 +79,17 @@ IndexPage.propTypes = {
 
 export default withStyles(styles)(IndexPage);
 
-        
-
+       
 // The result of this GraphQL query will be injected as props.data into the
 // IndexPage component.
 export const query = graphql`
   query {
-    allNodeBlog(sort: {fields: [changed], order:DESC}) {
+    allNodeBlog(
+      sort: {
+        fields: [changed], order:DESC
+      }
+      ) 
+      {
       edges {
         node {
           fields {
@@ -86,6 +97,9 @@ export const query = graphql`
           }
           id
           title
+          created
+          changed
+          field_featured
           body {
             processed
             summary
@@ -97,7 +111,7 @@ export const query = graphql`
             tags: field_tags {
             name,
             },
-            media: field_media {
+            media: field_hero {
               relationships {
                 field_media_image {
                    filename
@@ -105,7 +119,7 @@ export const query = graphql`
                       value
                       url
                       }
-                  localFile {
+                 localFile {
                     publicURL
                     childImageSharp {
                       fluid(maxWidth: 470, maxHeight: 353) {
@@ -115,7 +129,7 @@ export const query = graphql`
                   }
                 }
               }
-        },
+            },
           }
           created
         }

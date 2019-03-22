@@ -5,9 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import TemporaryDrawer from '../TemporaryDrawer/TemporaryDrawer'
+import NavigationDrawer from '../NavigationDrawer/NavigationDrawer'
 
-import 'typeface-open-sans';
+import 'typeface-roboto';
+import 'typeface-baloo-bhaina';
 const styles = {
   root: {
     flexGrow: 1,
@@ -22,7 +23,7 @@ const styles = {
     marginRight: '20px',
   },
   logo: {
-    fontFamily: 'Open Sans',
+    fontFamily: 'Baloo Bhaina',
     fontWeight: 800, 
     color: 'white',
     flexGrow: 1,
@@ -50,13 +51,18 @@ function Navigation(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="relative" color="primary" height="160">
+      <AppBar position="fixed" color="primary" height="160">
         <Toolbar>
           
             <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
-            style={{ textDecoration: 'none', fontFamily: 'Open Sans' }} to={"/"}>{props.siteTitle}</Link></Typography>
+            style={{ textDecoration: 'none', fontFamily: 'Baloo Bhaina' }} to={"/"}>{props.siteTitle}</Link>
+            <br />
+            </Typography>
+          
+
+
           <div className={classes.menu}>
-              <TemporaryDrawer 
+              <NavigationDrawer 
               />
           </div>
         </Toolbar>

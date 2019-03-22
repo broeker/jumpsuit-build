@@ -9,9 +9,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
-import Navigation from './Navigation/Navigation';
+import Navigation from '../Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
-import withRoot from '../withRoot';
+import withRoot from '../../withRoot';
+import Grid from '@material-ui/core/Grid'; 
+import Typography from '@material-ui/core/Typography';
 
 //import Header from "./header"
 //import "./layout.css"
@@ -22,11 +24,24 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
+      width: '100%', 
       marginLeft: 'auto',
       marginRight: 'auto',
     },
   },
+  main: {
+    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+      width: 1100, 
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  footer: {
+    backgroundColor: '#0288D1',
+    height: '200px',
+    color: '#ffffff',
+    marginTop: theme.spacing.unit * 16,
+  }
 });
 
 const Layout = (props) => {
@@ -56,10 +71,32 @@ const Layout = (props) => {
             <html lang="en"/>
           </Helmet>
           <div className={classes.root}>
-            <Navigation siteTitle={data.site.siteMetadata.title}/>
+            <Navigation 
+              siteTitle={data.site.siteMetadata.title}
+              slogan={data.site.siteMetadata.slogan}
+              />
+            <div className={classes.main}>
             <main>
               {children}
             </main>
+            </div>
+          </div>
+          <div className={classes.root}>
+            <div className={classes.footer}>
+<Grid container spacing={24} sm={12} md={12} lg={12}>
+  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+      <Typography>
+        Footer
+      </Typography>
+    </Grid>
+  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+     <Typography>
+        Footer
+      </Typography>
+  </Grid>
+</Grid>
+
+</div>
           </div>
         </>
       )}

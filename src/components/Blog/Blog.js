@@ -8,45 +8,94 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Img from 'gatsby-image';
 import BlogList from '../BlogList/BlogList';
+import GatsbyLinks from '../GatsbyLinks/GatsbyLinks';
+
+import ParagraphText from '../ParagraphText/ParagraphText';
+import ParagraphImage from '../ParagraphImage/ParagraphImage';
+
 
 const styles = theme => ({
-	// custom CSS here ...
+    // custom CSS here ...
+    hero: {
+      height: '50vh',
+  },
 });
 
-const Blog = (props) => (
-<>
-   <div style={{width:300}}>
-  {props.media.localFile &&
-    <Img fluid={props.media.localFile.childImageSharp.fluid} />
-  }
+class Blog extends React.Component {
 
-            </div>
-              <Typography variant="h6" color="textSecondary">
-         {props.category}
+
+    renderElement() {
+
+        if (  this.props.content  ) {
+        return (
+            <div>
+
+
+          { this.props.content.map((item, key) => {
+                    // if even, render grey background
+                    if (item.__typename == 'paragraph__text') {
+                      // don't forget to return what you want to render!
+                      
+                      return (
+                        <ParagraphText
+                       title={item.__typename} 
+                       text={item.field_text.processed}
+                        />
+                      );
+
+                    } else if (item.__typename == 'paragraph__image') {
+                      // you can also use ternary expression
+                      return (
+                          <ParagraphImage
+                            title={item.__typename} 
+                            media={item.relationships.field_image.relationships.field_media_image}
+                          />
+                      );
+                    }
+                  })
+        }
+      </div>
+        );
+      }
+
+    }
+
+    render() {
+const {classes} = this.props;
+        const sideList = (
+            <div>
+             
+
+        <Typography variant="headline" component="h2">
+        <h2>{this.props.title}</h2>
         </Typography>
-             <Typography variant="h4" paragraph>{props.title}</Typography>
-            {props.created}
-            <Typography variant="body1" paragraph dangerouslySetInnerHTML={{ __html: props.body.processed }} />
-     
- 
-     <List>
-    {props.tags &&
-    <ListItem>
-      <ListItemText primary="Tags" secondary={props.tags.map(item => item.name)}/>
-    </ListItem>
-    }   
-    </List>
-        <Typography variant="subtitle1">Try another one:</Typography>
-    <BlogList />
-     </>
-);
+      </div>
+        );
 
-Blog.propTypes = {
-  title: PropTypes.string.isRequired,
-  created: PropTypes.instanceOf(Date),
-  body: PropTypes.string,
-  tags: PropTypes.array,
-  category: PropTypes.string.isRequired,
-};
+
+        return ( <
+            >
+
+    {this.props.media.localFile &&
+      <Img className={classes.hero} fluid={this.props.media.localFile.childImageSharp.fluid} />
+    }
+      <Typography variant="headline" component="h2">
+        {this.props.title}
+      </Typography> { this.renderElement() }
+
+
+            <
+            />
+
+        )
+    }
+}
+
+
+
+
+
+
+
 
 export default withStyles(styles)(Blog);

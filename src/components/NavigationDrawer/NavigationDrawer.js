@@ -7,11 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-//import InboxIcon from '@material-ui/icons/MoveToInbox';
 //import MailIcon from '@material-ui/icons/Mail';
 //import AppsIcon from '@material-ui/icons/Apps';
-//import HomeIcon from '@material-ui/icons/Home';
-//import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 //import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'gatsby'
@@ -25,19 +22,36 @@ import { mdiFlash } from '@mdi/js'
 import Typography from '@material-ui/core/Typography';
 
 
-import JumpsuitIcon from '../JumpsuitIcon/JumpsuitIcon.js';
 
-
-const styles = {
-  list: {
-    width: 250,
+const styles = theme => ({
+  top: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
-  button: {
-    textDecoration: 'none',
+  hero: {
+    fontSize: 14, 
+  color: '#ffffff',
+    
+    },
+    //backgroundImage: `url(${Image})`,
+  header: {
+    padding: theme.spacing.unit * 2,
+  width: 320,
+  backgroundColor: '#37474F', 
+  },
+  list: {
+    width: 320,
+  },
+  foo: {
+    color: '#ffffff',
   }
-};
 
-class TemporaryDrawer extends React.Component {
+  
+});
+
+class NavigationDrawer extends React.Component {
   state = {
     top: false,
     left: false,
@@ -58,33 +72,30 @@ class TemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List >
-          
-       
           <Link className={classes.button} to={'/'}>
           <ListItem button key="drupal">
-            <ListItemIcon><JumpsuitIcon /></ListItemIcon>
+            <ListItemIcon><mdiFlash /></ListItemIcon>
             <ListItemText>Drupal</ListItemText>
           </ListItem>
           </Link>  
-        
-        
         </List>
         <Divider />
       </div>
     );
-
-
-  
-
     return (
       <div>
-
-
         <IconButton onClick={this.toggleDrawer('right', true)}><Icon path={mdiFlash} size={1.1} color="white"  /></IconButton>
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
-<Typography className={classes.hero} variant="subtitle1" paragraph>
-welcome to jumpsite life
-        </Typography>
+        
+        <div className={classes.header}> 
+          <Typography className={classes.hero} variant="subtitle1" paragraph>
+          Hello. I write about Drupal, 
+          Gatsby, and the jumpsuit lifestyle. You can learn more <Link className={classes.foo} to="/page/about-me">about me</Link> or start
+          poking around below.
+          </Typography>
+        </div>
+          
+
           <div
             tabIndex={0}
             role="button"
@@ -92,9 +103,7 @@ welcome to jumpsite life
             onKeyDown={this.toggleDrawer('right', false)}
           >
             {sideList}
-        
 
-          FOO
           </div>
         </Drawer>
       </div>
@@ -102,8 +111,8 @@ welcome to jumpsite life
   }
 }
 
-TemporaryDrawer.propTypes = {
+NavigationDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+export default withStyles(styles)(NavigationDrawer);

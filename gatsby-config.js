@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `jumpsuit.life`,
-    description: `jumpsite.life is my personal blog.`,
+    description: `Powered by Gatsby and Drupal`,
     author: `broeker@gmail.com`,
-    slogan: 'since 2019'
+    slogan: 'Drupal, Gatsby, and the jumpsuit lifestyle.'
   },
   plugins: [
     `gatsby-plugin-sharp`,
