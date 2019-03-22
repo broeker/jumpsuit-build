@@ -25,7 +25,6 @@ import { mdiFlash } from '@mdi/js'
 import Typography from '@material-ui/core/Typography';
 
 
-import JumpsuitIcon from '../JumpsuitIcon/JumpsuitIcon.js';
 
 
 const styles = {
@@ -62,7 +61,7 @@ class TemporaryDrawer extends React.Component {
        
           <Link className={classes.button} to={'/'}>
           <ListItem button key="drupal">
-            <ListItemIcon><JumpsuitIcon /></ListItemIcon>
+            <ListItemIcon><mdiDrupal /></ListItemIcon>
             <ListItemText>Drupal</ListItemText>
           </ListItem>
           </Link>  
