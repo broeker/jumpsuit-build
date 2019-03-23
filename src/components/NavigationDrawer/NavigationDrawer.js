@@ -15,26 +15,31 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import IconButton from '@material-ui/core/IconButton';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import Icon from '@mdi/react';
+import Icon from '@mdi/react'
 
-import { mdiFlash } from '@mdi/js';
+import { mdiFlash } from '@mdi/js'
 
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'gatsby';
+import { Link } from 'gatsby'
 import AvatarImage from '../AvatarImage/AvatarImage';
 
-import { mdiDrupal } from '@mdi/js';
+import { mdiDrupal } from '@mdi/js'
 
 
 const styles = {
   list: {
     width: 320,
+
+    fontSize: 16,
   },
   fullList: {
     width: 'auto',
   },
   link: {
     color: '#000',
+  },
+  inline: {
+    fontSize: 16,
   }
 };
 
@@ -60,8 +65,8 @@ class NavigationDrawer extends React.Component {
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? {mdiFlash} : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText secondary={text} />
             </ListItem>
           ))}
         </List>
@@ -87,12 +92,12 @@ class NavigationDrawer extends React.Component {
         </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary="hello world."
+          className={classes.inline} primary="hello world."
           secondary={
             <React.Fragment>
               <Typography component="span" className={classes.inline} color="textPrimary">
                 I write about Drupal, 
-          Gatsby, and the jumpsuit lifestyle. You can learn more <Link className={classes.link} to="/page/about-me">about me</Link> or start
+          Gatsby, and the jumpsuit lifestyle. You can learn more <Link className={classes.link} to="/page/the-jumpsuit-lifestyle-in-america">about me</Link> or start
           poking around below.
               </Typography>
             </React.Fragment>

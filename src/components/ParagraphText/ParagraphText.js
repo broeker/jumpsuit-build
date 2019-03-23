@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
+	text: {
+		lineHeight: 2.
+	}
 };
 
 const ParagraphText = (props) => {
@@ -12,7 +15,11 @@ const ParagraphText = (props) => {
 
   return (
            <div>
-           <Typography className={classes.pos} dangerouslySetInnerHTML={{ __html: props.text }} />
+            <Typography variant="headline" component="h3">
+           {props.header}
+           </Typography>
+           
+           <Typography className={classes.text} dangerouslySetInnerHTML={{ __html: props.text }} />
             </div>
   );
 };

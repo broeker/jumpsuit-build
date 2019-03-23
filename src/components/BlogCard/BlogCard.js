@@ -14,8 +14,6 @@ import moment from 'moment'
 
 const styles = {
   card: {
-    maxWidth: 345,
-    minHeight: 310,
     underline: 0,
     textDecoration: 'none',
   },
@@ -51,7 +49,8 @@ const BlogCard = (props) => {
           component="img"
           alt="Contemplative Reptile"
           className={classes.media}
-          height="50vh"
+          height="auto"
+          
           image={props.media.localFile.publicURL}
           title="Contemplative Reptile"
         />

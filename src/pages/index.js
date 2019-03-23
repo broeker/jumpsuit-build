@@ -10,6 +10,7 @@ import BlogCard from '../components/BlogCard/BlogCard';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography';
 
 import moment from 'moment'
@@ -32,43 +33,52 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 10,
     color: foobar, 
   },
-
-  
 });
 
 const IndexPage = (props) => {
   const {classes} = props;
+  const isEditMode = 'EDIT';
 
   return (
     <Layout>
-      <Paper className={classes.root}>
-        <Typography className={classes.hero} variant="subtitle1" paragraph>
-
-        "Jumpsuits to me represent many diverse qualities from action and adventure to manual labor. Jumpsuits
-        are worn by people who push the envelope like skydivers, downhill skiers, astronauts, and high
-        speed racers. Also, people incarcerated in institutions that are full of life’s most dangerous
-        criminals who made their own rules."<br /> <em>— Jeff Hilliard made in Los Angeles, CA</em>
-        </Typography>
+        
 
 
-
-      </Paper>
-              <Grid container spacing={40} className={classes.cardGrid}>
+        <Grid container spacing={24}>
         {
-          props.data.allNodeBlog.edges.map(({ node: blog }) => (
-            <Grid item key={blog.title} xs={12} md={4}>
+          props.data.allNodeBlog.edges.map(({ node: blog }, key) => (
+           <> 
+
+                {(key === 0) ? 
+                    <Grid item key={blog.title} lg={8}>
               <BlogCard
                 title={blog.title}
-                summary={blog.body.summary}
+                summary={blog.summary.processed}
                 category={blog.relationships.category[0].name}
                 path={blog.fields.slug}
                 media={blog.relationships.media.relationships.field_media_image}
                 changed={moment(blog.changed).format('DD MMMM, YYYY')}
               />
             </Grid>
+                :
+             <Grid item key={blog.title} lg={4}>
+              <BlogCard
+                title={blog.title}
+                summary={blog.summary.processed}
+                category={blog.relationships.category[0].name}
+                path={blog.fields.slug}
+                media={blog.relationships.media.relationships.field_media_image}
+                changed={moment(blog.changed).format('DD MMMM, YYYY')}
+              />
+            </Grid>
+                }
+
+
+             </>
           ))
         }
         </Grid>
+       
     </Layout>
   );
 };
@@ -100,9 +110,8 @@ export const query = graphql`
           created
           changed
           field_featured
-          body {
+          summary: field_summary {
             processed
-            summary
           }
           relationships {
             category: field_blog_category {

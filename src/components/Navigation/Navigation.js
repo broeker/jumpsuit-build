@@ -6,12 +6,21 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import NavigationDrawer from '../NavigationDrawer/NavigationDrawer'
+//import Search from "../Search"
+
 
 import 'typeface-roboto';
 import 'typeface-baloo-bhaina';
-const styles = {
+
+const searchIndices = [
+  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+]
+
+const styles = theme => ({
   root: {
     flexGrow: 1,
+    marginBottom: '6em', 
   },
   grow: {
     flexGrow: 1,
@@ -24,7 +33,8 @@ const styles = {
   },
   logo: {
     fontFamily: 'Baloo Bhaina',
-    fontWeight: 800, 
+    fontWeight: 600, 
+    fontSize: 30,
     color: 'white',
     flexGrow: 1,
    underline: 0,
@@ -44,7 +54,7 @@ const styles = {
 
     }
      }
-};
+});
 
 function Navigation(props) {
   const { classes } = props;

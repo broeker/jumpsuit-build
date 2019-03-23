@@ -31,10 +31,12 @@ const pageTemplate = (props) => {
       <div className={classes.root}>
         <Page
               title={page.title}
-              created={moment(page.created).format('DD MMMM, YYYY')}
+              caption={page.field_caption}
+              changed={moment(page.changed).format('DD MMMM, YYYY')}
               body={page.body}
               content={page.relationships.field_content}
               media={page.relationships.field_hero.relationships.field_media_image}
+              summary={page.summary.processed}
           />
       </div>
       
@@ -54,6 +56,9 @@ export const query = graphql `
       title
       created
       changed
+      summary: field_summary {
+        processed
+      }
       relationships {
       field_hero {
           id
@@ -87,16 +92,23 @@ export const query = graphql `
         __typename
         ... on paragraph__text {
           id
-          field_text {
-            value
-            format
-            processed
-          }
+          field_header
+              field_text {
+                value
+                format
+                processed
+              }
         }
         ... on paragraph__image {
           id
+          field_caption {
+              format
+              value
+              processed
+            }
           relationships {
-            field_image {
+            
+            field_single_image {
               relationships {
                 field_media_image {
                   id

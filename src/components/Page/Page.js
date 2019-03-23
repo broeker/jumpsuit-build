@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 //import Img from 'gatsby-image';
 import ParagraphText from '../ParagraphText/ParagraphText';
 import ParagraphImage from '../ParagraphImage/ParagraphImage';
-
+import 'typeface-roboto';
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -22,6 +22,22 @@ const styles = theme => ({
   },
   paper: {
     padding: theme.spacing.unit * 2,
+  },
+  headline: {
+    fontSize: 50,
+    fontWeight: 900,
+    fontFamily: 'Roboto',
+    color: '#455A64',
+  },
+  summary: {
+    color: '#666',
+    lineHeight: 2,
+    fontSize: 20,
+  },
+  changed: {
+    color: '#999',
+    fontSize: 13,
+    textAlign: 'right',
   }
 });
 
@@ -41,6 +57,7 @@ return (
                         <ParagraphText
                        title={item.__typename} 
                        text={item.field_text.processed}
+                       header={item.field_header}
                         />
                       );
 
@@ -49,7 +66,8 @@ return (
                       return (
                           <ParagraphImage
                             title={item.__typename} 
-                            media={item.relationships.field_image.relationships.field_media_image}
+                            media={item.relationships.field_single_image.relationships.field_media_image}
+                            caption={item.field_caption.processed}
                           />
                       );
                     }
@@ -65,25 +83,19 @@ return (
  render() {
    
  const { classes } = this.props;
-  const sideList = (
-        <div>
-
-        <Typography variant="headline" component="h2">
-        <h2>{this.props.title}</h2>
-      </Typography>
-      </div>
-    );
-   
-
     return (
     <>
 
 <Grid container spacing={24} sm={12} md={12} lg={12}>
   <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
     <div className={classes.paper}>
-      <Typography variant="headline" component="h1">
+      <Typography variant="headline" className={classes.headline} component="h1">
         {this.props.title}
       </Typography>
+           <Typography className={classes.summary} dangerouslySetInnerHTML={{ __html: this.props.summary }} />
+           <Typography className={classes.changed}>
+           last updated: {this.props.changed}
+           </Typography>
     </div>
     </Grid>
   <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
