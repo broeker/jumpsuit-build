@@ -100,7 +100,7 @@ const Layout = (props) => {
             </div>
           </div>
             <div className={classes.footer}>
-<Grid container spacing={24} sm={12} md={12} lg={12}>
+<Grid container spacing={24}>
   <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
          <Typography className={classes.quote} paragraph>
         "Jumpsuits to me represent many diverse qualities from action and adventure to manual labor. Jumpsuits are worn by people who push the envelope like skydivers, downhill skiers, astronauts, and high speed racers. Also, people incarcerated in institutions that are full of life’s most dangerous criminals who made their own rules."

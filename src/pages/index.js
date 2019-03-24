@@ -9,44 +9,55 @@ import moment from 'moment'
 import BlogCard from '../components/BlogCard/BlogCard';
 
 const styles = theme => ({
+  root: {
+     flexGrow: 1,
+  }
 });
-
 const IndexPage = (props) => {
+  const {classes} = props;
+  const isEditMode = 'EDIT';
+
   return (
-    <>
     <Layout>
-      <Grid container spacing={24}>
-        { props.data.allNodeBlog.edges.map(({ node: blog }, key) => (
-            <> 
-            {(key === 0) ? 
-              <Grid item key={blog.title} lg={8}>
-                <BlogCard
-                  title={blog.title}
-                  summary={blog.summary.processed}
-                  category={blog.relationships.category[0].name}
-                  path={blog.fields.slug}
-                  media={blog.relationships.media.relationships.field_media_image}
-                  changed={moment(blog.changed).format('DD MMMM, YYYY')}
-                />
-              </Grid>
-            :
-              <Grid item key={blog.title} lg={4}>
-                <BlogCard
-                  title={blog.title}
-                  summary={blog.summary.processed}
-                  category={blog.relationships.category[0].name}
-                  path={blog.fields.slug}
-                  media={blog.relationships.media.relationships.field_media_image}
-                  changed={moment(blog.changed).format('DD MMMM, YYYY')}
-                />
-              </Grid>
-            }
-            </>
+        
+
+
+        <Grid container spacing={24}>
+        {
+          props.data.allNodeBlog.edges.map(({ node: blog }, key) => (
+           <React.Fragment key={blog.id}>
+
+                {(key === 0) ? 
+                    <Grid item key={blog.title} lg={8}>
+              <BlogCard
+                title={blog.title}
+                summary={blog.summary.processed}
+                category={blog.relationships.category[0].name}
+                path={blog.fields.slug}
+                media={blog.relationships.media.relationships.field_media_image}
+                changed={moment(blog.changed).format('DD MMMM, YYYY')}
+              />
+            </Grid>
+                :
+             <Grid item key={blog.title} lg={4}>
+              <BlogCard
+                title={blog.title}
+                summary={blog.summary.processed}
+                category={blog.relationships.category[0].name}
+                path={blog.fields.slug}
+                media={blog.relationships.media.relationships.field_media_image}
+                changed={moment(blog.changed).format('DD MMMM, YYYY')}
+              />
+            </Grid>
+                }
+
+          </React.Fragment>
+          
           ))
         }
-      </Grid>
+        </Grid>
+       
     </Layout>
-    </>
   );
 };
 

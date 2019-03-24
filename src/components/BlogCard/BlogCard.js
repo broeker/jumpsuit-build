@@ -63,10 +63,11 @@ const BlogCard = (props) => {
           <Typography variant="overline" gutterBottom>last updated: {props.changed}</Typography>
       </CardContent>
       <CardActions>
-              <Button size="small"  href={props.path} path={props.path} component={BlogLink}>Read more</Button>
       </CardActions>
     </Card>
     </Link>
+    
+
     </CardActionArea>
   );
 };

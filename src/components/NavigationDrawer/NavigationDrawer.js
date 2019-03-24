@@ -4,8 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem'
-;
+import ListItem from '@material-ui/core/ListItem';
 
 import Avatar from '@material-ui/core/Avatar';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -22,7 +21,7 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'gatsby'
 import AvatarImage from '../AvatarImage/AvatarImage';
 
-//import { mdiDrupal } from '@mdi/js'
+import { mdiAccount } from '@mdi/js'
 
 
 const styles = {
@@ -60,6 +59,21 @@ class NavigationDrawer extends React.Component {
     const { classes } = this.props;
 
     const sideList = (
+      <>
+      <div className={classes.list}>
+        <List>
+          <ListItem button key={1}>
+            <ListItemIcon><Icon path={mdiAccount}
+        size={1}
+        horizontal
+        vertical
+        rotate={90}
+        color="red"
+        spin/></ListItemIcon>
+            <ListItemText>High Speed Racing</ListItemText>
+          </ListItem>
+        </List>
+      </div>
       <div className={classes.list}>
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -68,9 +82,11 @@ class NavigationDrawer extends React.Component {
               <ListItemText secondary={text} />
             </ListItem>
           ))}
+
         </List>
         <Divider />
       </div>
+      </>
     );
 
         return (
