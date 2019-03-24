@@ -1,17 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+
 import Helmet from 'react-helmet';
 import Layout from '../components/Layout/Layout';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Page from '../components/Page/Page';
 import moment from 'moment'
+
 const styles = theme => ({
     root: {
-        ...theme.mixins.gutters(),
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
-        marginTop: theme.spacing.unit * 12,
          flexGrow: 1,
     },
 });
@@ -21,38 +18,33 @@ const pageTemplate = (props) => {
     const { nodePage: page } = props.data;
 
     return (
-        <Layout>
+       <Layout>
        <Helmet
         title={page.title}
         meta={[
           {name: 'description', content: page.title},
         ]}
       />
+      
       <div className={classes.root}>
         <Page
               title={page.title}
-              caption={page.field_caption}
               changed={moment(page.changed).format('DD MMMM, YYYY')}
-              body={page.body}
-              content={page.relationships.field_content}
-              media={page.relationships.field_hero.relationships.field_media_image}
               summary={page.summary.processed}
+              media={page.relationships.field_hero.relationships.field_media_image}
+              content={page.relationships.field_content}
           />
       </div>
-      
     </Layout>
     )
 };
+
 export default withStyles(styles)(pageTemplate);
 
-// The $drupal_id variable here is obtained from the "context" object passed into
-// the createPage() API in gatsby-node.js.
-//
-// Also note the use of field name aliasing in the query. This is done to
-// help normalize the shape of the recipe data.
 export const query = graphql `
   query fooTemplate($slug: String!) {
     nodePage (fields: { slug: { eq: $slug } }) {
+      drupal_id
       title
       created
       changed

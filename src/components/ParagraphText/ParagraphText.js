@@ -1,25 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-const styles = {
+const styles = theme => ({
+	 ...theme.mixins.gutters(),
 	text: {
 		lineHeight: 2.
+	},
+	subhead: {
+	   fontSize: 30,
+    fontWeight: 900,
+    fontFamily: 'Montserrat',
+    color: '#455A64',	
 	}
-};
+});
 
 const ParagraphText = (props) => {
   const { classes } = props;
 
   return (
            <div>
-            <Typography variant="headline" component="h3">
+            <Typography className={classes.subhead} component="h3">
            {props.header}
            </Typography>
            
-           <Typography className={classes.text} dangerouslySetInnerHTML={{ __html: props.text }} />
+           <Typography className={classes.text} dangerouslySetInnerHTML={{ __html: props.text }} gutterTop />
             </div>
   );
 };

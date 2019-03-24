@@ -12,10 +12,6 @@ import NavigationDrawer from '../NavigationDrawer/NavigationDrawer'
 import 'typeface-roboto';
 import 'typeface-baloo-bhaina';
 
-const searchIndices = [
-  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
-  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
-]
 
 const styles = theme => ({
   root: {

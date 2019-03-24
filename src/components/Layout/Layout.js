@@ -14,7 +14,6 @@ import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../../withRoot';
 import Grid from '@material-ui/core/Grid'; 
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link'
 import 'typeface-lalezar';
 
 //import Header from "./header"

@@ -17,22 +17,20 @@ const styles = theme => ({
 
 const gatsbylinksTemplate = (props) => {
     const { classes } = props;
-    //const { nodeBlog: blog } = props.data;
-    const {
-        googleSheetSheet1Row: link = props.data;
+    const { allGoogleSheetSheet1Rowg: link } = props.data;
 
-
-        <Paper className={classes.root}>
-        <Gatsbylinks
+    return (
+        <Layout className={classes.Root}>
+      <Paper className={classes.root}>
+        <GatsbyLink
               title={link.title}
-              url={link.url}
           />
       </Paper>
-
-        <
-        /Layout>
+      
+    </Layout>
     )
 };
+
 export default withStyles(styles)(gatsbylinksTemplate);
 
 // The $drupal_id variable here is obtained from the "context" object passed into

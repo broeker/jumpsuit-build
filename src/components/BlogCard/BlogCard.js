@@ -10,7 +10,6 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import moment from 'moment'
 
 const styles = {
   card: {
@@ -58,14 +57,10 @@ const BlogCard = (props) => {
         <Typography className={classes.title} color="textSecondary">
           {props.category}
         </Typography>
-        <Typography className={classes.title} color="textSecondary">
-          Last update: {props.changed}
-        </Typography>
-        <Typography variant="headline" component="h2">
-          { /** <h3><Link to={props.path}>{props.title}</Link></h3> */ }
-          <h4>{props.title}</h4>
-          <Typography className={classes.pos} color="textSecondary" dangerouslySetInnerHTML={{ __html: props.summary }} />
-        </Typography>
+        <Typography variant="h3" component="h3">{props.title}</Typography>
+        <Typography variant="subtitle2" dangerouslySetInnerHTML={{ __html: props.summary }} />
+
+          <Typography variant="overline" gutterBottom>last updated: {props.changed}</Typography>
       </CardContent>
       <CardActions>
               <Button size="small"  href={props.path} path={props.path} component={BlogLink}>Read more</Button>

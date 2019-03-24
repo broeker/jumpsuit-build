@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import Layout from '../components/Layout/Layout'
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Blog from '../components/Blog/Blog';
 import moment from 'moment'
@@ -13,6 +12,7 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         marginTop: theme.spacing.unit * 12,
+        flexGrow: 1,
     },
 });
 
@@ -28,15 +28,15 @@ const blogTemplate = (props) => {
           {name: 'description', content: blog.title},
         ]}
       />
-      <Paper className={classes.root}>
+       <div className={classes.root}>
         <Blog
               title={blog.title}
-              created={moment(blog.created).format('DD MMMM, YYYY')}
+              changed={moment(blog.changed).format('DD MMMM, YYYY')}
+              summary={blog.summary.processed}
               content={blog.relationships.field_content}
               media={blog.relationships.field_hero.relationships.field_media_image}
           />
-      </Paper>
-      
+      </div>
     </Layout>
     )
 };
@@ -50,9 +50,13 @@ export default withStyles(styles)(blogTemplate);
 export const query = graphql `
   query blogTemplate($slug: String!) {
     nodeBlog (fields: { slug: { eq: $slug } }) {
+      drupal_id
       title
       created
       changed
+      summary: field_summary {
+        processed
+      }
       relationships {
         field_hero {
           id
@@ -85,6 +89,7 @@ export const query = graphql `
         __typename
         ... on paragraph__text {
           id
+          field_header
           field_text {
             value
             format
@@ -94,7 +99,7 @@ export const query = graphql `
         ... on paragraph__image {
           id
           relationships {
-            field_image {
+            field_single_image {
               relationships {
                 field_media_image {
                   id
