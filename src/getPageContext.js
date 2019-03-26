@@ -42,16 +42,19 @@ const theme = createMuiTheme({
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
+    TextSecondary: {
+      fontSize: 12,
+    },
     h1: {
       fontSize: 60,
       fontWeight: 900,
       fontFamily: 'Montserrat',
-      color: '#455A64', 
+      color: '#607D8B', 
       lineHeight: '1.2',
       },
     h3: {
       fontSize: 35,
-      color: '#455A64',
+      color: '#607D8B',
       fontWeight: 900,
 
       fontFamily: 'Montserrat',
@@ -71,6 +74,9 @@ const theme = createMuiTheme({
       color: '#666',
       fontSize: 14,
       textAlign: 'right',
+    },
+    ListItemText: {
+      fontSize: 10,
     } 
   },
   status: {

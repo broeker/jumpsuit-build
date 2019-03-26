@@ -22,9 +22,22 @@ import { Link } from 'gatsby'
 import AvatarImage from '../AvatarImage/AvatarImage';
 
 import { mdiAccount } from '@mdi/js'
+import { mdiDrupal } from '@mdi/js'
+import { mdiRocket } from '@mdi/js'
+import { mdiReact } from '@mdi/js'
+import { mdiHeart } from '@mdi/js'
+import { mdiGatsby } from '@mdi/js'
+import { mdiEmoticonNeutralOutline} from '@mdi/js'
 
+import { mdiGraphql } from '@mdi/js'
+
+import { mdiMaterialUi } from '@mdi/js'
 
 const styles = {
+  root: {
+    fontSize: 10,
+    color: 'red',
+  },
   list: {
     width: 320,
 
@@ -35,11 +48,28 @@ const styles = {
   },
   link: {
     color: '#000',
+    fontSize: 10,
   },
   inline: {
     fontSize: 16,
-  }
+  },
+  icon: {
+    padding: 0,
+    margin: 0,
+    lineHeight: 1,
+    height: 24,
+    fontSize: 10,
+ },
+ buttontext: {
+  fontSize: 16,
+ }
 };
+
+// We can use inline-style
+const style = {
+  fontSize: 12,
+};
+
 
 class NavigationDrawer extends React.Component {
   state = {
@@ -61,37 +91,49 @@ class NavigationDrawer extends React.Component {
     const sideList = (
       <>
       <div className={classes.list}>
-        <List>
+        <List className={classes.root} >
+          <ListItem button key={2}>
+            <ListItemIcon><Icon className={classes.icon} path={mdiEmoticonNeutralOutline} size={1}/></ListItemIcon>
+            <ListItemText classes={{ primary: classes.buttontext }} >Gatsby</ListItemText>
+          </ListItem>
+          <ListItem button key={3}>
+            <ListItemIcon><Icon className={classes.icon} color="#0678be" path={mdiDrupal} size={1}/></ListItemIcon>
+            <ListItemText  classes={{ primary: classes.buttontext }} primary="Drupal" />
+          </ListItem>
+          <ListItem button key={4}>
+            <ListItemIcon><Icon className={classes.icon} color="#61dafb" path={mdiReact} size={1}/></ListItemIcon>
+            <ListItemText classes={{ primary: classes.buttontext }} primary="React" />
+          </ListItem>
+          <ListItem button key={6}>
+            <ListItemIcon><Icon className={classes.icon} color="#2196F3" path={mdiMaterialUi} size={1}/></ListItemIcon>
+            <ListItemText classes={{ primary: classes.buttontext }} primary="Material UI" />
+          </ListItem>
+          <ListItem button key={7}>
+            <ListItemIcon><Icon className={classes.icon} color="#2196F3" path={mdiGraphql} size={1}/></ListItemIcon>
+            <ListItemText classes={{ primary: classes.buttontext }} primary="GraphQL" />
+          </ListItem>
           <ListItem button key={1}>
-            <ListItemIcon><Icon path={mdiAccount}
-        size={1}
-        horizontal
-        vertical
-        rotate={90}
-        color="red"
-        spin/></ListItemIcon>
-            <ListItemText>High Speed Racing</ListItemText>
+            <ListItemIcon><Icon className={classes.icon} color="purple" path={mdiRocket} size={1}/></ListItemIcon>
+            <ListItemText classes={{ primary: classes.buttontext }} primary="High Speed Racing" />
+          </ListItem>
+          <ListItem button key={5}>
+            <ListItemIcon><Icon className={classes.icon} color="red" path={mdiHeart} size={1}/></ListItemIcon>
+            <ListItemText classes={{ primary: classes.buttontext }} primary="Jumpsuit life" />
           </ListItem>
         </List>
-      </div>
-      <div className={classes.list}>
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText secondary={text} />
-            </ListItem>
-          ))}
 
-        </List>
-        <Divider />
+    
+
       </div>
-      </>
+
+
+
+           </>
     );
 
         return (
       <div>
-        <IconButton onClick={this.toggleDrawer('right', true)}><Icon path={mdiFlash} size={1.1} color="white"  /></IconButton>
+        <IconButton onClick={this.toggleDrawer('right', true)}><Icon path={mdiFlash} size={1.1} color="white" /></IconButton>
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
           <div
             tabIndex={0}

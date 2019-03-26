@@ -12,7 +12,7 @@ const styles = theme => ({
 	   fontSize: 30,
     fontWeight: 900,
     fontFamily: 'Montserrat',
-    color: '#455A64',	
+    color: '#607D8B',	
 	}
 });
 

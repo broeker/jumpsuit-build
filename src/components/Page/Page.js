@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import ParagraphText from '../ParagraphText/ParagraphText';
 import ParagraphImage from '../ParagraphImage/ParagraphImage';
+import GatsbyLinks from '../GatsbyLinks/GatsbyLinks';
 
 const styles = theme => ({
   root: {
@@ -15,6 +16,9 @@ const styles = theme => ({
     marginLeft: theme.indent.indentleft,
     marginRight: theme.indent.indentright,
     marginTop: theme.indent.indenttop,
+  },
+  hero: {
+    padding: '0em',
   }
 });
 
@@ -72,7 +76,9 @@ return (
 </Grid>
 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
 {this.props.media.localFile &&
-<Img className={classes.hero} fluid={this.props.media.localFile.childImageSharp.fluid} />
+  <div className={classes.hero}>
+<Img fluid={this.props.media.localFile.childImageSharp.fluid} />
+</div>
 }
 </Grid>
 </Grid>

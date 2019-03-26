@@ -10,7 +10,6 @@ const styles = theme => ({
   image: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: '80%',
     padding: theme.spacing.unit * 1,
   },
   caption: {
@@ -26,12 +25,16 @@ const ParagraphImage = (props) => {
   return (
     <>
       <Paper className={classes.image}>
-  {props.media.localFile &&
-    <Img fluid={props.media.localFile.childImageSharp.fluid} />
-  }
+        <Img
+          fluid={
+            props.media.localFile
+              .childImageSharp.fluid
+          }
+        />
+
 <div className={classes.caption}>
   <Typography variant="caption" gutterBottom>
-         {props.caption}
+        {props.caption}
       </Typography>
 
 

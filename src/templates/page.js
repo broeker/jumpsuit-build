@@ -65,15 +65,9 @@ export const query = graphql `
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid {
-                      aspectRatio
-                      src
-                      sizes
-                      originalImg
-                      originalName
-                      presentationWidth
-                      presentationHeight
-                    }
+                   fluid {
+                        ...GatsbyImageSharpFluid
+                      }
                   }
                 }
               }
@@ -112,14 +106,8 @@ export const query = graphql `
                   localFile {
                     publicURL
                     childImageSharp {
-                      fluid {
-                        aspectRatio
-                        src
-                        sizes
-                        originalImg
-                        originalName
-                        presentationWidth
-                        presentationHeight
+          fluid(maxWidth: 550, maxHeight: 550) {
+                        ...GatsbyImageSharpFluid
                       }
                     }
                   }

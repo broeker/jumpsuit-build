@@ -20,6 +20,13 @@ const blogTemplate = (props) => {
     const { classes } = props;
     const { nodeBlog: blog } = props.data;
 
+           var media;
+          if (blog.relationships.field_hero) {
+            media = blog.relationships.field_hero.relationships.field_media_image
+          } else {
+            media = ''
+          }
+
     return (
         <Layout className={classes.Root}>
        <Helmet
@@ -34,7 +41,7 @@ const blogTemplate = (props) => {
               changed={moment(blog.changed).format('DD MMMM, YYYY')}
               summary={blog.summary.processed}
               content={blog.relationships.field_content}
-              media={blog.relationships.field_hero.relationships.field_media_image}
+              media={media}
           />
       </div>
     </Layout>
@@ -71,14 +78,15 @@ export const query = graphql `
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid {
-                      aspectRatio
-                      src
-                      sizes
-                      originalImg
-                      originalName
-                      presentationWidth
-                      presentationHeight
+                     fluid(
+                      maxHeight: 548, 
+                      maxWidth: 1280, 
+                      ) 
+                    {
+                     ...GatsbyImageSharpFluid
+                      aspectRatio,
+                      presentationWidth,
+                      presentationHeight,
                     }
                   }
                 }
@@ -98,6 +106,11 @@ export const query = graphql `
         }
         ... on paragraph__image {
           id
+          field_caption {
+              format
+              value
+              processed
+            }
           relationships {
             field_single_image {
               relationships {
