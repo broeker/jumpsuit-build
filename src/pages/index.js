@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import moment from 'moment'
 import Typography from '@material-ui/core/Typography';
 import BlogCard from '../components/BlogCard/BlogCard';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   root: {
@@ -37,8 +38,8 @@ class IndexPage extends React.Component {
           }
 
           var media;
-          if (blog.relationships.media) {
-            media = blog.relationships.field_hero.relationships.field_media_image
+          if (blog.relationships.field_hero) {
+            media = blog.relationships.field_hero.relationships.field_media_image.localFile.childImageSharp.fluid
           } else {
             media = ''
           }
@@ -87,6 +88,7 @@ export const query = graphql`
       sort: {
         fields: [changed], order:DESC
       }
+      limit: 5
       ) 
       {
       edges {

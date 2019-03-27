@@ -4,7 +4,7 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `test`,
+    title: `jumpsuit.life`,
     description: `Powered by Gatsby and Drupal`,
     author: `broeker@gmail.com`,
     slogan: 'Drupal, Gatsby, and the jumpsuit lifestyle.'
@@ -38,7 +38,7 @@ module.exports = {
     resolve: 'gatsby-source-google-sheets',
     options: {
         spreadsheetId: '1CqKrChn44fsm3JnWZm6utsvWfJYTp4AKB12VUMW0yT8',
-        worksheetTitle: 'Sheet1',
+        worksheetTitle: 'Sites',
         credentials: require('./client_secret.json')
     }
     },

@@ -40,7 +40,7 @@ export default withStyles(styles)(gatsbylinksTemplate);
 // help normalize the shape of the recipe data.
 export const query = graphql `
   query {
-        allGoogleSheetSheet1Row {
+        allGoogleSheetSitesRow {
           edges {
             node {
               id

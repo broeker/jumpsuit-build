@@ -48,7 +48,6 @@ const styles = {
   },
   link: {
     color: '#000',
-    fontSize: 10,
   },
   inline: {
     fontSize: 16,

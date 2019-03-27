@@ -10,6 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Img from 'gatsby-image';
+import AuthorDetails from '../AuthorDetails/AuthorDetails'
 
 const styles = {
   card: {
@@ -35,6 +36,12 @@ const styles = {
   media: {
     maxWidth: '1280',
     maxHeight: '720',
+  },
+  category: {
+    color: '#666',
+    textTransform: 'uppercase',
+    fontSize: 14,
+    fontWeight: 900,
   }
 };
 
@@ -45,30 +52,19 @@ class BlogCard extends React.Component {
       return (
         <>
 
-        <div>FOO
-
-
-        </div>
-
-
        <CardActionArea style={{ textDecoration: 'none' }}>
         <Link style={{ textDecoration: 'none'}} to={this.props.path}>
           <Card className={classes.card}>
            {this.props.media &&
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              className={classes.media}
-              image={this.props.media.localFile.publicURL}
-              title="Contemplative Reptile"
-              classes={{ media: classes.media }}
-              />
+              <Img fluid={this.props.media} />
             }
             <CardContent>
-              <Typography className={classes.title} color="textSecondary">{this.props.category}</Typography>
+              <Typography className={classes.category}>{this.props.category}</Typography>
               <Typography variant="h3" component="h3">{this.props.title}</Typography>
               <Typography variant="subtitle2" dangerouslySetInnerHTML={{ __html: this.props.summary }} />
-              <Typography variant="overline" gutterBottom>last updated: {this.props.changed}</Typography>
+              <AuthorDetails
+                changed={this.props.changed}
+              />
             </CardContent>
           </Card>
         </Link>

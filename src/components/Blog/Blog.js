@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import ParagraphText from '../ParagraphText/ParagraphText';
 import ParagraphImage from '../ParagraphImage/ParagraphImage';
 import AvatarImage from '../AvatarImage/AvatarImage';
+import Disqus from '../Disqus/Disqus'
 
 const styles = theme => ({
     // custom CSS here ...
@@ -19,6 +20,7 @@ class Blog extends React.Component {
   renderElement() {
     if (  this.props.content  ) {
       return (
+        <>
         <div>
         { this.props.content.map((item, key) => {
           if (item.__typename === 'paragraph__text') {
@@ -43,6 +45,7 @@ class Blog extends React.Component {
         })
         }
         </div>
+        </>
       );
     }
   }
