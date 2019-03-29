@@ -5,9 +5,6 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
 	 ...theme.mixins.gutters(),
-	text: {
-		lineHeight: 2.
-	},
 	subhead: {
 	   fontSize: 30,
     fontWeight: 900,
@@ -20,19 +17,11 @@ const ParagraphText = (props) => {
   const { classes } = props;
 
   return (
-           <div>
-            <Typography className={classes.subhead} component="h3">
-           {props.header}
-           </Typography>
-           
-           <Typography className={classes.text} dangerouslySetInnerHTML={{ __html: props.text }} gutterTop />
-            </div>
+    <>
+      <Typography className={classes.subhead} variant="h3">{props.header}</Typography>
+      <Typography dangerouslySetInnerHTML={{ __html: props.text }} variant="body1" />
+    </>
   );
-};
-
-ParagraphText.propTypes = {
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(ParagraphText);;

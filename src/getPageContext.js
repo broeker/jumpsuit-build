@@ -34,16 +34,29 @@ const theme = createMuiTheme({
       dark: blue[700],
     },
   },
+  overrides: {
+    mdTemplate: { // Name of the component ⚛️ / style sheet
+      foo: { // Name of the rule
+        color: 'pink', // Some CSS
+      },
+    },
+  },
+
   typography: {
     useNextVariants: true,
     fontFamily: '"Work Sans","Roboto","Helvetica", "Arial", sans-serif',
-    fontSize: 22,
+    fontSize: 20,
     lineHeight: 2, 
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
+    color: 'red',
     TextSecondary: {
       fontSize: 12,
+    },
+    body1: {
+      lineHeight: 2,
+      color: '#333',
     },
     h1: {
       fontSize: 60,
@@ -65,15 +78,16 @@ const theme = createMuiTheme({
       fontSize: 30,
     },
     subtitle2: {
-      color: '#666',
+      color: '#333',
       lineHeight: '1.6',
-      fontSize: 22,
+      fontSize: 20,
       fontWeight: 300,
     },
     overline: {
       color: '#666',
       fontSize: 14,
-      textAlign: 'right',
+      fontWeight: 700,
+      color: '#90A4AE',
     },
     ListItemText: {
       fontSize: 10,

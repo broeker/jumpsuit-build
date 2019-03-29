@@ -12,6 +12,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'gatsby'
+
 const styles = theme => ({
    ...theme.mixins.gutters(),
   text: {
@@ -23,16 +25,23 @@ const styles = theme => ({
     fontFamily: 'Montserrat',
     color: '#607D8B', 
   },
-  changed: {
-    color: '#333',
-  },
-   buttontext: {
-  fontSize: 16,
+ byline: {
+  fontSize: 14,
+  fontWeight: 500,
+  color: '#666',
+  lineHeight: 1.3,
+  textDecoration: 'none',
  },
  dateline: {
   fontSize: 12,
-  textAlign: 'right',
   color: '#666',
+ },
+ title: {
+  fontSize: 12,
+  color: '#666',
+  textDecoration: 'none',
+ },
+ authordetails: {
  }
 });
 
@@ -41,33 +50,36 @@ const AuthorDetails = (props) => {
 
   return (
     <>
-    <Grid container>
-    <Grid item xs={12}>
-            <div className={classes.demo}>
-              <List>
-                  <ListItem>
-                    <ListItemAvatar>
-                      <AvatarImage />
-                    </ListItemAvatar>
-                    <ListItemText classes={{ primary: classes.buttontext, secondary: classes.buttontext }} 
-                      primary="Tim Broeker"
-                      secondary="electric citizen"
-                    />
-                  </ListItem>
-              </List>
-            </div>
-          </Grid>
-          <Grid item xs={12} className={classes.dateline}>
-            UPDATED: {props.changed}
-          </Grid>
+    <Grid container className={classes.authordetails}>
+      <Grid item xs={12}>
+        <div className={classes.demo}>
+        <Link to="/about/me" className={classes.byline}>
 
-          </Grid>
+          <List>
+            <ListItem>
+              <ListItemAvatar>
+                <AvatarImage />
+              </ListItemAvatar>
+              <ListItemText classes={{ primary: classes.byline, secondary: classes.title }} 
+                primary="Tim Broeker"
+                     secondary={
+                    <React.Fragment>
+                    {' Technical director, Electric Citizen'}
+                    <div>Updated: {props.changed}</div>
+                    </React.Fragment>
+                    }
+              />
+            </ListItem>
+          </List>
+          </Link>
 
-
-    
-    </> 
-  );
-};
+            <Typography className={classes.dateline}></Typography>
+          </div>
+        </Grid>
+      </Grid>
+      </> 
+    );
+  };
 
 
 export default withStyles(styles)(AuthorDetails);

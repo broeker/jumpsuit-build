@@ -10,7 +10,9 @@ const styles = theme => ({
   image: {
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginBottom: '3em',
     padding: theme.spacing.unit * 1,
+    width: '90%',
   },
   caption: {
     fontSize: 14,
@@ -33,11 +35,9 @@ const ParagraphImage = (props) => {
         />
 
 <div className={classes.caption}>
-  <Typography variant="caption" gutterBottom>
+  <Typography variant="caption">
         {props.caption}
       </Typography>
-
-
  </div>
  
  </Paper>

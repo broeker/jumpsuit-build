@@ -12,6 +12,8 @@ import Paper from '@material-ui/core/Paper';
 const styles = theme => ({
   root: {
      flexGrow: 1,
+  },
+  card: {
   }
 });
 
@@ -19,6 +21,7 @@ const styles = theme => ({
 
 class IndexPage extends React.Component {
   renderElement() {
+     const { classes } = this.props;
     if (  this.props.data  ) {
       return (
         <div>
@@ -46,14 +49,14 @@ class IndexPage extends React.Component {
 
 
           return (
-            <Grid item key={blog.title} lg={grid}>
+            <Grid className={classes.card} item key={blog.title} lg={grid}>
               <BlogCard
                 title={blog.title}
                 summary={blog.summary.processed}
                 category={blog.relationships.category[0].name}
                 path={blog.fields.slug}
                 media={media}
-                changed={moment(blog.changed).format('DD MMMM, YYYY')}
+                changed={moment(blog.changed).format('MMMM DD, YYYY')}
               />
             </Grid>
             );

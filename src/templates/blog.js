@@ -9,9 +9,6 @@ import moment from 'moment'
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
-        marginTop: theme.spacing.unit * 12,
         flexGrow: 1,
     },
 });
@@ -42,6 +39,7 @@ const blogTemplate = (props) => {
               summary={blog.summary.processed}
               content={blog.relationships.field_content}
               media={media}
+              category={blog.relationships.category[0].name}
           />
       </div>
     </Layout>
@@ -65,6 +63,9 @@ export const query = graphql `
         processed
       }
       relationships {
+        category: field_blog_category {
+          name,
+        }
         field_hero {
           id
           relationships {

@@ -10,66 +10,93 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Img from 'gatsby-image';
+import Switch from '@material-ui/core/Switch';
+import Fade from '@material-ui/core/Fade';
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
+import { mdiArrowRightBoldCircle} from '@mdi/js'
+import Paper from '@material-ui/core/Paper';
+import Icon from '@mdi/react'
+import Grid from '@material-ui/core/Grid';
+
+
 
 const styles = {
+  root: {
+    color: '#37474F',
+    height: 'auto',
+  },
+  icon: {
+    vertialAlign: 'bottom',
+    textAlign: 'right',
+  },
   card: {
-    underline: 0,
-    textDecoration: 'none',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-    underline: 0,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  foo: {
-    textDecoration: 'none',
-  },
-  media: {
-    maxWidth: '1280',
-    maxHeight: '720',
-  },
-  category: {
-    color: '#666',
-    textTransform: 'uppercase',
-    fontSize: 14,
-    fontWeight: 900,
+    height: '100%',
+    padding: 0,
   }
 };
 
 class BlogCard extends React.Component {
+
+  
+  state = {
+    checked: false,
+  };
+
+  handleChange = () => {
+    this.setState(state => ({ checked: !state.checked }));
+  }; 
+
   renderElement() {
     const { classes } = this.props;
+     const { checked } = this.state;
+
     if (this.props) {
       return (
-        <>
+       <>
+          
 
-       <CardActionArea style={{ textDecoration: 'none' }}>
+       <CardActionArea 
+       
+        onMouseEnter={this.handleChange}
+        onMouseLeave={this.handleChange}
+       style={{ textDecoration: 'none' }}
+       classes={{
+        root: classes.root, // class name, e.g. `classes-nesting-root-x`
+      }} 
+
+       >
+        
+
         <Link style={{ textDecoration: 'none'}} to={this.props.path}>
           <Card className={classes.card}>
            {this.props.media &&
               <Img fluid={this.props.media} />
             }
             <CardContent>
-              <Typography className={classes.category}>{this.props.category}</Typography>
-              <Typography variant="h3" component="h3">{this.props.title}</Typography>
-              <Typography variant="subtitle2" dangerouslySetInnerHTML={{ __html: this.props.summary }} />
-              <AuthorDetails
+            <Grid container>
+              <Grid item sm={6}>
+                <Typography variant="overline">{this.props.category}</Typography>
+                              </Grid>
+              <Grid item className={classes.icon} sm={6}>
+                <Fade in={checked} timeout={ 1500 } >
+                <Icon className={classes.icon} color="#ff9800" path={mdiArrowRightBoldCircle} size={1.2}/>
+                < /Fade>
+              </Grid>
+            </Grid>
+              <Typography variant="h3" component="h3">{this.props.title}  
+              
+
+</Typography> 
+              
+                          <Typography variant="subtitle2" dangerouslySetInnerHTML={{ __html: this.props.summary }} />
+              
+                          <AuthorDetails
                 changed={this.props.changed}
               />
             </CardContent>
           </Card>
         </Link>
       </CardActionArea>
-      
       </>
       );
     }
@@ -77,6 +104,8 @@ class BlogCard extends React.Component {
   
   render() {
     const {classes} = this.props;
+
+     const { checked } = this.state;
     return ( 
       <>
       { this.renderElement() }

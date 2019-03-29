@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-
+import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Icon from '@mdi/react'
-
 import { mdiFlash } from '@mdi/js'
 
 import Typography from '@material-ui/core/Typography';
@@ -59,8 +58,8 @@ const styles = {
     height: 24,
     fontSize: 10,
  },
- buttontext: {
-  fontSize: 16,
+ button: {
+  fontSize: 14,
  }
 };
 
@@ -131,8 +130,11 @@ class NavigationDrawer extends React.Component {
     );
 
         return (
-      <div>
-        <IconButton onClick={this.toggleDrawer('right', true)}><Icon path={mdiFlash} size={1.1} color="white" /></IconButton>
+      <>
+    <Button onClick={this.toggleDrawer('right', true)} variant="contained" color="secondary" className={classes.button}>
+        Menu <Icon path={mdiFlash} size={.8} color="white" />
+      </Button>
+
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
           <div
             tabIndex={0}
@@ -153,7 +155,7 @@ class NavigationDrawer extends React.Component {
             <React.Fragment>
               <Typography component="span" className={classes.inline} color="textPrimary">
                 I write about Drupal, 
-          Gatsby, and the jumpsuit lifestyle. You can learn more <Link className={classes.link} to="/page/the-jumpsuit-lifestyle-in-america">about me</Link> or start
+          Gatsby, and the jumpsuit lifestyle. You can learn more <Link className={classes.link} to="/about/me">about me</Link> or start
           poking around below.
               </Typography>
             </React.Fragment>
@@ -165,7 +167,7 @@ class NavigationDrawer extends React.Component {
             {sideList}
           </div>
         </Drawer>
-      </div>
+      </>
     );
   }
 }

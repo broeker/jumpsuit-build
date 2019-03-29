@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import NavigationDrawer from '../NavigationDrawer/NavigationDrawer'
+import Headroom from "react-headroom"
 //import Search from "../Search"
 
 
@@ -33,47 +34,42 @@ const styles = theme => ({
     fontSize: 30,
     color: 'white',
     flexGrow: 1,
-   underline: 0,
+    underline: 0,
       '&:hover': {
           color: 'black',
       }
-  },
+    },
     active: {
         backgroundColor: 'rgba(255, 255, 255, 0.12)',
     },
-      myTextStyle: {
-      
+    myTextStyle: {
       color: 'white',
-    textDecoration: 'none',
-        '&:hover': {
+      textDecoration: 'none',
+      '&:hover': {
         color: '#e8e8e8'
-
-    }
-     }
-});
+        }
+     },
+     headroom: {
+      marginBottom: '3em',
+     },
+     });
 
 function Navigation(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" color="primary" height="160">
-        <Toolbar>
-          
+    
+      <Headroom className={classes.headroom}>
+      <AppBar position="static" color="primary">
+        <Toolbar color="primary">
             <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
             style={{ textDecoration: 'none', fontFamily: 'Baloo Bhaina' }} to={"/"}>{props.siteTitle}</Link>
-            <br />
             </Typography>
-          
-
-
-          <div className={classes.menu}>
               <NavigationDrawer 
               />
-          </div>
         </Toolbar>
       </AppBar>
-    </div>
+    </Headroom>
   );
 }
 

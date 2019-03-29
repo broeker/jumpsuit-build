@@ -4,17 +4,42 @@ import { withStyles } from '@material-ui/core/styles';
 import Img from 'gatsby-image';
 import ParagraphText from '../ParagraphText/ParagraphText';
 import ParagraphImage from '../ParagraphImage/ParagraphImage';
-import AvatarImage from '../AvatarImage/AvatarImage';
+import AuthorDetails from '../AuthorDetails/AuthorDetails';
 import Disqus from '../Disqus/Disqus'
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
     // custom CSS here ...
       ...theme.mixins.gutters(),
-    hero: {
-      width: 'auto',
-      marginBottom: '4rem',
-  },
+      header: {
+        paddingLeft: '3em',
+        paddingRight: '3em',
+        marginBottom: '3em',
+
+      },
+      foo: {
+      color: 'red',
+      padding: '2em',
+      marginBottom: '4em',
+      width: '80%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      },
+      body: {
+        width: '80%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      }
 });
+
+export const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+}
+
 
 class Blog extends React.Component {
   renderElement() {
@@ -54,18 +79,27 @@ class Blog extends React.Component {
     const {classes} = this.props;
       return ( 
         <>
-        <div className={classes.hero}>
+                   <div style={style}> 
+        <Card className={classes.foo}>
+
         {this.props.media.localFile &&
         <Img fluid={this.props.media.localFile.childImageSharp.fluid} />
         }
-        </div>
       
+        <Typography variant="overline">{this.props.category}</Typography>
         <Typography variant="h1" component="h1">{this.props.title}</Typography>
         <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: this.props.summary }} />
-        <Typography variant="overline" gutterBottom>last updated: {this.props.changed}</Typography>
-        <AvatarImage
-        /> 
+              <AuthorDetails
+                changed={this.props.changed}
+              />
+        
+        </Card>
+       
+        <Typography className={classes.body} variant="body1">
         { this.renderElement() }
+        </Typography>
+        </div>
+
         </>
       )
     }

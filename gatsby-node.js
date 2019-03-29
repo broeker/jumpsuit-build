@@ -61,6 +61,18 @@ exports.createPages = ({ actions, graphql }) => {
                 }
               }
             }
+            allMarkdownRemark(
+              sort: { order: DESC, fields: [frontmatter___date] }
+              limit: 1000
+              ) {
+                edges {
+                  node {
+                    frontmatter {
+                    path
+                    }
+                  }
+              }
+            }
           }
         `
             ).then(result => {
@@ -92,6 +104,19 @@ exports.createPages = ({ actions, graphql }) => {
                       },
                    })
                 })
+
+
+                const mdTemplate = path.resolve(`src/templates/mdpage.js`)
+
+                result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+                  createPage({
+                    path: node.frontmatter.path,
+                    component: mdTemplate,
+                    context: {}, // additional data can be passed via context
+                  })
+                })
+            
+
             })
         )
     })
