@@ -1,4 +1,7 @@
+const queries = require('./src/utils/algolia')
+
 require('dotenv').config()
+
 
 module.exports = {
   siteMetadata: {
@@ -8,16 +11,7 @@ module.exports = {
     slogan: 'Drupal, Gatsby, and the jumpsuit lifestyle.'
   },
   plugins: [
-
          
-    
-     {
-      resolve: `gatsby-plugin-page-transitions`,
-      options: {
-        transition: 99000,
-      },
-    },
-
     // PLUGIN-SHARP
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -59,9 +53,16 @@ module.exports = {
       },
     },
 
-        
-    
-    
+    // ALGOLIA
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },  
     
     // HELMET
     `gatsby-plugin-react-helmet`,

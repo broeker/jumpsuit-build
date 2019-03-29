@@ -17,6 +17,13 @@ const pageTemplate = (props) => {
     const { classes } = props;
     const { nodePage: page } = props.data;
 
+     var media;
+          if (page.relationships.field_hero) {
+            media = page.relationships.field_hero.relationships.field_media_image
+          } else {
+            media = ''
+          }
+
     return (
        <Layout>
        <Helmet
@@ -31,7 +38,7 @@ const pageTemplate = (props) => {
               title={page.title}
               changed={moment(page.changed).format('DD MMMM, YYYY')}
               summary={page.summary.processed}
-              media={page.relationships.field_hero.relationships.field_media_image}
+              media={media}
               content={page.relationships.field_content}
           />
       </div>

@@ -1,5 +1,5 @@
 const pageQuery = `{
-  pages: allNodePages 
+  pages: allNodePage 
    {
     edges {
       node {
@@ -18,13 +18,28 @@ const postQuery = `{
   posts: allNodeBlog  {
     edges {
       node {
-                  drupal_id
-                  title
-                  created
-                  fields {
-                   slug 
-                  }
-                }
+          fields {
+            slug 
+          }
+          id
+          title
+          created
+          changed
+          field_featured
+          summary: field_summary {
+            format
+            processed
+          }
+          relationships {
+            category: field_blog_category {
+              name,
+            },
+            tags: field_tags {
+            name,
+            },
+          }
+          created
+        }
     }
   }
 }`

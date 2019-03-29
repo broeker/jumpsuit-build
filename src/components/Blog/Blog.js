@@ -5,9 +5,9 @@ import Img from 'gatsby-image';
 import ParagraphText from '../ParagraphText/ParagraphText';
 import ParagraphImage from '../ParagraphImage/ParagraphImage';
 import AuthorDetails from '../AuthorDetails/AuthorDetails';
-import Disqus from '../Disqus/Disqus'
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
+import { DiscussionEmbed } from "disqus-react";
 
 const styles = theme => ({
     // custom CSS here ...
@@ -30,6 +30,12 @@ const styles = theme => ({
         width: '80%',
         marginLeft: 'auto',
         marginRight: 'auto',
+      },
+      disqus: {
+        width: '80%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: '6em',
       }
 });
 
@@ -77,6 +83,14 @@ class Blog extends React.Component {
 
   render() {
     const {classes} = this.props;
+    const siteTitle = 'jumpsite.life';
+    const disqusShortname = "jumpsuit-life";
+    const disqusConfig = {
+      identifier: this.props.id,
+      title: this.props.title,
+    };
+
+
       return ( 
         <>
                    <div style={style}> 
@@ -99,7 +113,9 @@ class Blog extends React.Component {
         { this.renderElement() }
         </Typography>
         </div>
-
+          <div className={classes.disqus} > 
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+        </div>
         </>
       )
     }

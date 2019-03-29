@@ -13,6 +13,12 @@ import Headroom from "react-headroom"
 import 'typeface-roboto';
 import 'typeface-baloo-bhaina';
 
+import Search from "../Search"
+
+const searchIndices = [
+  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+]
 
 const styles = theme => ({
   root: {
@@ -65,8 +71,11 @@ function Navigation(props) {
             <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
             style={{ textDecoration: 'none', fontFamily: 'Baloo Bhaina' }} to={"/"}>{props.siteTitle}</Link>
             </Typography>
+
               <NavigationDrawer 
               />
+
+               <Search collapse indices={searchIndices} />
         </Toolbar>
       </AppBar>
     </Headroom>

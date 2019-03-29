@@ -25,11 +25,15 @@ const styles = theme => ({
 class Page extends React.Component {
 
 renderElement(){
-
+    var media;
+    
 return (
       <div>
         {
             this.props.content.map((item, key) => {
+
+     
+
                     // if even, render grey background
                     if (item.__typename === 'paragraph__text') {
                       // don't forget to return what you want to render!
@@ -43,11 +47,16 @@ return (
                       );
 
                     } else if (item.__typename === 'paragraph__image') {
+                       if (item.relationships.field_single_image) {
+            media = item.relationships.field_single_image.relationships.field_media_image
+          } else {
+            media = ''
+          }
                       // you can also use ternary expression
                       return (
                           <ParagraphImage
                             title={item.__typename} 
-                            media={item.relationships.field_single_image.relationships.field_media_image}
+                            media={media}
                             caption={item.field_caption.processed}
                           />
                       );

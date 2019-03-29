@@ -23,16 +23,17 @@ const styles = theme => ({
 
 const ParagraphImage = (props) => {
   const { classes } = props;
-
+  var media;
+  if (props.media.localFile) {
+    media = props.media.localFile.childImageSharp.fluid
+  } else {
+    media = ''
+  }
+  
   return (
+
     <>
       <Paper className={classes.image}>
-        <Img
-          fluid={
-            props.media.localFile
-              .childImageSharp.fluid
-          }
-        />
 
 <div className={classes.caption}>
   <Typography variant="caption">
@@ -41,6 +42,7 @@ const ParagraphImage = (props) => {
  </div>
  
  </Paper>
+
  </>
   );
 };
