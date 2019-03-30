@@ -10,9 +10,6 @@ import Avatar from '@material-ui/core/Avatar';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Icon from '@mdi/react'
 import { mdiFlash } from '@mdi/js'
 
@@ -20,12 +17,10 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'gatsby'
 import AvatarImage from '../AvatarImage/AvatarImage';
 
-import { mdiAccount } from '@mdi/js'
 import { mdiDrupal } from '@mdi/js'
 import { mdiRocket } from '@mdi/js'
 import { mdiReact } from '@mdi/js'
 import { mdiHeart } from '@mdi/js'
-import { mdiGatsby } from '@mdi/js'
 import { mdiEmoticonNeutralOutline} from '@mdi/js'
 
 import { mdiGraphql } from '@mdi/js'
@@ -61,11 +56,6 @@ const styles = {
  button: {
   fontSize: 14,
  }
-};
-
-// We can use inline-style
-const style = {
-  fontSize: 12,
 };
 
 

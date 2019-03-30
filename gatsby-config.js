@@ -16,6 +16,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-remark-copy-linked-files`,
+    `gatsby-plugin-styled-components`,
     
         
     // SOURCE FILSYSTEM

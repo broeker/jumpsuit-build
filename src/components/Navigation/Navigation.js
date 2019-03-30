@@ -7,8 +7,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import NavigationDrawer from '../NavigationDrawer/NavigationDrawer'
 import Headroom from "react-headroom"
-//import Search from "../Search"
-
 
 import 'typeface-roboto';
 import 'typeface-baloo-bhaina';

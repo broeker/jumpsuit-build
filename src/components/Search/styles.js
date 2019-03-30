@@ -7,16 +7,25 @@ export const Root = styled.div`
   grid-gap: 1em;
 `
 
+export const theme = `
+ gray: #464849;
+  darkGray: #282828;
+  lightGray: #ebebeb;
+  veryLightGray: #f7f7f7,
+`
+
 export const SearchIcon = styled(Search)`
   width: 1em;
   pointer-events: none;
+  margin-left: 1em;
+  color: white;
 `
 
 const focussed = css`
   background: ${props => props.theme.white};
   color: ${props => props.theme.darkBlue};
   cursor: text;
-  width: 5em;
+  width: 15em;
   + ${SearchIcon} {
     color: ${props => props.theme.darkBlue};
     margin: 0.3em;
@@ -92,7 +101,7 @@ const grid = css`
     grid-gap: 1em;
     li {
       padding: 0.3em 0.5em;
-      background: ${props => props.theme.veryLightGray};
+      background: ray};
       border-radius: ${props => props.theme.smallBorderRadius};
     }
   }
@@ -102,6 +111,7 @@ export const HitsWrapper = styled.div`
   display: ${props => (props.show ? `grid` : `none`)};
   max-height: 80vh;
   overflow: scroll;
+  background: #ffffff;
   ${props => (props.hitsAsGrid ? grid : list)};
   * {
     margin-top: 0;

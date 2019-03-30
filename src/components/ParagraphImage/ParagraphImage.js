@@ -33,8 +33,11 @@ const ParagraphImage = (props) => {
   return (
 
     <>
+     
       <Paper className={classes.image}>
-
+        <Img
+          fluid={media}
+        />
 <div className={classes.caption}>
   <Typography variant="caption">
         {props.caption}

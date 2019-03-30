@@ -1,13 +1,10 @@
-  import React from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import PropTypes from 'prop-types';
 import Layout from '../components/Layout/Layout'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment'
-import Typography from '@material-ui/core/Typography';
 import BlogCard from '../components/BlogCard/BlogCard';
-import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   root: {
@@ -28,16 +25,12 @@ class IndexPage extends React.Component {
         <Grid container spacing={24}>
          { this.props.data.allNodeBlog.edges.map(({ node: blog }, key) => {
 
-          if (blog.title) {
-            var title = 'fook'
-          } else {
-            var title = "snook"
-          }
+          var grid; 
 
           if (key === 0) {
-            var grid=8
+            grid=8
           } else {
-            var grid=4
+            grid=4
           }
 
           var media;
@@ -70,7 +63,6 @@ class IndexPage extends React.Component {
   }
   
   render() {
-    const {classes} = this.props;
     return ( 
        <Layout>
         <Grid container spacing={24}>

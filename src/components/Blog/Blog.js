@@ -6,7 +6,6 @@ import ParagraphText from '../ParagraphText/ParagraphText';
 import ParagraphImage from '../ParagraphImage/ParagraphImage';
 import AuthorDetails from '../AuthorDetails/AuthorDetails';
 import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
 import { DiscussionEmbed } from "disqus-react";
 
 const styles = theme => ({
@@ -83,7 +82,6 @@ class Blog extends React.Component {
 
   render() {
     const {classes} = this.props;
-    const siteTitle = 'jumpsite.life';
     const disqusShortname = "jumpsuit-life";
     const disqusConfig = {
       identifier: this.props.id,

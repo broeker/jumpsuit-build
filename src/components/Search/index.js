@@ -12,6 +12,7 @@ import { Root, HitsWrapper, By } from "./styles"
 import Input from "./Input"
 import * as hitComps from "./hits"
 
+
 const events = ["mousedown", "touchstart"]
 
 const Results = connectStateResults(
@@ -24,7 +25,11 @@ const Stats = connectStateResults(
     res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
 )
 
+
+
 export default class Search extends Component {
+  
+
   state = { query: ``, focussed: false, ref: createRef() }
   searchClient = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
