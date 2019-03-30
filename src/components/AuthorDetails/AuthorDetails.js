@@ -7,7 +7,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Link } from 'gatsby'
 
 const styles = theme => ({
    ...theme.mixins.gutters(),
@@ -48,7 +47,6 @@ const AuthorDetails = (props) => {
     <Grid container className={classes.authordetails}>
       <Grid item xs={12}>
         <div className={classes.demo}>
-        <Link to="/about/me" className={classes.byline}>
 
           <List>
             <ListItem>
@@ -60,13 +58,12 @@ const AuthorDetails = (props) => {
                      secondary={
                     <React.Fragment>
                     {' Technical director, Electric Citizen'}
-                    <div>Updated: {props.changed}</div>
+                    Updated: {props.changed}
                     </React.Fragment>
                     }
               />
             </ListItem>
           </List>
-          </Link>
 
             <Typography className={classes.dateline}></Typography>
           </div>
