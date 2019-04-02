@@ -9,6 +9,8 @@ const PostHit = clickHandler => ({ hit }) => (
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h3>
     </Link>
+
+    <Snippet attribute="title" hit={hit} tagName="mark" />
   </div>
 )
 

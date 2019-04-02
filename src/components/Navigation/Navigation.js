@@ -36,10 +36,12 @@ const styles = theme => ({
     fontFamily: 'Baloo Bhaina',
     fontWeight: 600, 
     fontSize: 30,
-    color: 'white',
+    color: 'blue',
     flexGrow: 1,
+    marginTop: 8,
+    marginLeft: 6,
     underline: 0,
-      '&:hover': {
+    '&:hover': {
           color: 'black',
       }
     },
@@ -50,7 +52,8 @@ const styles = theme => ({
       color: 'white',
       textDecoration: 'none',
       '&:hover': {
-        color: '#e8e8e8'
+        color: 'rgba(0, 0, 0, 0.54)',
+        opacity: '.3'
         }
      },
      headroom: {
@@ -66,12 +69,13 @@ function Navigation(props) {
       <Headroom className={classes.headroom}>
       <AppBar position="static" color="primary">
         <Toolbar color="primary">
+<NavigationDrawer 
+              />
             <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
             style={{ textDecoration: 'none', fontFamily: 'Baloo Bhaina' }} to={"/"}>{props.siteTitle}</Link>
             </Typography>
 
-              <NavigationDrawer 
-              />
+              
 
                <Search collapse indices={searchIndices} />
         </Toolbar>

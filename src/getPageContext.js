@@ -12,7 +12,12 @@ import 'typeface-montserrat';
 // A theme with custom primary and secondary color.
 // It's optional.
 
+
+
 const theme = createMuiTheme({
+  white: {
+    background: 'red',
+  },
   palette: {
     primary: {
       light: orange[300],

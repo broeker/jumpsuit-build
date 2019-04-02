@@ -47,11 +47,11 @@ return (
                       );
 
                     } else if (item.__typename === 'paragraph__image') {
-                       if (item.relationships.field_single_image) {
-            media = item.relationships.field_single_image.relationships.field_media_image
-          } else {
-            media = ''
-          }
+                      if (item.relationships.field_single_image) {
+                          media = item.relationships.field_single_image.relationships.field_media_image
+                      } else {
+                        media = ''
+                      }
                       // you can also use ternary expression
                       return (
                           <ParagraphImage

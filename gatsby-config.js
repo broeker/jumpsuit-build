@@ -5,7 +5,7 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `test 123`,
+    title: `testing`,
     description: `Powered by Gatsby and Drupal`,
     author: `broeker@gmail.com`,
     slogan: 'Drupal, Gatsby, and the jumpsuit lifestyle.'

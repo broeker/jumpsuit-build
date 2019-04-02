@@ -9,7 +9,11 @@ const PageHit = clickHandler => ({ hit }) => (
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h3>
     </Link>
-  </div>
+    <Snippet attribute="title" hit={hit} tagName="mark" />
+      
+      
+      
+      </div>
 )
 
 export default PageHit

@@ -5,13 +5,14 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Icon from '@mdi/react'
 import { mdiFlash } from '@mdi/js'
+import { mdiHeart } from '@mdi/js'
 
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'gatsby'
@@ -20,7 +21,7 @@ import AvatarImage from '../AvatarImage/AvatarImage';
 import { mdiDrupal } from '@mdi/js'
 import { mdiRocket } from '@mdi/js'
 import { mdiReact } from '@mdi/js'
-import { mdiHeart } from '@mdi/js'
+import { mdiMenu } from '@mdi/js'
 import { mdiEmoticonNeutralOutline} from '@mdi/js'
 
 import { mdiGraphql } from '@mdi/js'
@@ -121,16 +122,13 @@ class NavigationDrawer extends React.Component {
 
         return (
       <>
-    <Button onClick={this.toggleDrawer('right', true)} variant="contained" color="secondary" className={classes.button}>
-        Menu <Icon path={mdiFlash} size={.8} color="white" />
-      </Button>
-
-        <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
+      <IconButton onClick={this.toggleDrawer('left', true)}><Icon path={mdiMenu} size={1.1} color="white"  /></IconButton>
+      <Drawer anchor="left" open={this.state.left} onClose={this.toggleDrawer('left', false)}>
           <div
             tabIndex={0}
             role="button"
-            onClick={this.toggleDrawer('right', false)}
-            onKeyDown={this.toggleDrawer('right', false)}
+            onClick={this.toggleDrawer('left', false)}
+            onKeyDown={this.toggleDrawer('left', false)}
           >
           <List className={classes.root}>
       <ListItem  className={classes.list} alignItems="flex-start">

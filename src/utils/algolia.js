@@ -3,13 +3,16 @@ const pageQuery = `{
    {
     edges {
       node {
-                  drupal_id
-                  title
-                  created
-                  fields {
-                   slug 
-                  }
-                }
+         drupal_id
+         title
+         created
+         fields {
+          slug 
+         }
+         summary: field_summary {
+          processed
+         }
+       }
     }
   }
 }`
@@ -44,12 +47,7 @@ const postQuery = `{
   }
 }`
 
-const flatten = arr =>
-  arr.map(({ node: { frontmatter, ...rest } }) => ({
-    ...frontmatter,
-    ...rest,
-  }))
-const settings = { attributesToSnippet: [`excerpt:20`] }
+const settings = { attributesToSnippet: [`*:20`] }
 
 const queries = [
   {
