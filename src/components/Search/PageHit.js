@@ -1,5 +1,5 @@
 import React from "react"
-import { Highlight, Snippet } from "react-instantsearch-dom"
+import { Highlight, Snippet, Hits } from "react-instantsearch-dom"
 import { Link } from "gatsby"
 
 const PageHit = clickHandler => ({ hit }) => (
@@ -9,10 +9,10 @@ const PageHit = clickHandler => ({ hit }) => (
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h3>
     </Link>
-    <Snippet attribute="title" hit={hit} tagName="mark" />
-      
-      
-      
+    <Snippet 
+      attribute="field_summary.processed" hit={hit} tagName="mark" />
+    <Snippet 
+      attribute="relationships.field_content.field_text.processed" hit={hit} tagName="mark" />
       </div>
 )
 

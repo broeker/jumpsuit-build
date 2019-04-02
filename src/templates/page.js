@@ -86,11 +86,9 @@ export const query = graphql `
         ... on paragraph__text {
           id
           field_header
-              field_text {
-                value
-                format
-                processed
-              }
+          field_text {
+            processed
+          }
         }
         ... on paragraph__image {
           id

@@ -9,9 +9,26 @@ const pageQuery = `{
          fields {
           slug 
          }
-         summary: field_summary {
+          field_summary {
           processed
          }
+        
+        relationships {
+        field_content {
+        __typename
+        ... on paragraph__text {
+          id
+          field_header
+              field_text {
+                processed
+              }
+        }
+      }
+        
+      }
+
+
+
        }
     }
   }
@@ -47,7 +64,29 @@ const postQuery = `{
   }
 }`
 
-const settings = { attributesToSnippet: [`*:20`] }
+const settings = { attributesToSnippet: [
+  `title`,
+  `field_summary.processed`,
+  `field_header`,
+  `relationships.field_content.field_text.processed`,
+  
+]}
+
+/*
+const flatten = arr =>
+  arr.map(({ edges: { node, ...rest } }) => ({
+    ...node,
+    ...rest,
+  }))
+*/
+
+
+
+const flatten = arr =>
+  arr.map(({ node: { frontmatter, ...rest } }) => ({
+    ...frontmatter,
+    ...rest,
+  }))
 
 const queries = [
   {
