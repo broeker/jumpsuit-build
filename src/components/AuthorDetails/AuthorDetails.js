@@ -10,33 +10,22 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = theme => ({
    ...theme.mixins.gutters(),
-  text: {
-    lineHeight: 2.
+  byline: {
+    fontSize: 14,
+    fontWeight: 500,
+    color: theme.custom.secondarytext,
+    lineHeight: 1.3,
+    textDecoration: 'none',
   },
-  subhead: {
-    fontSize: 30,
-    fontWeight: 900,
-    fontFamily: 'Montserrat',
-    color: '#607D8B', 
-  },
- byline: {
-  fontSize: 14,
-  fontWeight: 500,
-  color: '#666',
-  lineHeight: 1.3,
-  textDecoration: 'none',
- },
  dateline: {
-  fontSize: 12,
-  color: '#666',
+  fontSize: 14,
+  color: theme.custom.secondarytext,
  },
  title: {
   fontSize: 12,
-  color: '#666',
+  color: theme.custom.secondarytext,
   textDecoration: 'none',
  },
- authordetails: {
- }
 });
 
 const AuthorDetails = (props) => {
@@ -44,10 +33,8 @@ const AuthorDetails = (props) => {
 
   return (
     <>
-    <Grid container className={classes.authordetails}>
+    <Grid container>
       <Grid item xs={12}>
-        <div className={classes.demo}>
-
           <List>
             <ListItem>
               <ListItemAvatar>
@@ -55,23 +42,20 @@ const AuthorDetails = (props) => {
               </ListItemAvatar>
               <ListItemText classes={{ primary: classes.byline, secondary: classes.title }} 
                 primary="Tim Broeker"
-                     secondary={
-                    <React.Fragment>
-                    {' Technical director, Electric Citizen'}
-                    Updated: {props.changed}
+                secondary={
+                  <React.Fragment>
+                    {'Technical director, Electric Citizen '}
+                    <div>Updated: {props.changed}</div>
                     </React.Fragment>
                     }
-              />
+                  />
             </ListItem>
           </List>
-
-            <Typography className={classes.dateline}></Typography>
-          </div>
+          <Typography className={classes.dateline}></Typography>
         </Grid>
       </Grid>
       </> 
     );
   };
 
-
-export default withStyles(styles)(AuthorDetails);
+  export default withStyles(styles)(AuthorDetails);

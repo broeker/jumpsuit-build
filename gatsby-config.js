@@ -2,13 +2,13 @@ const queries = require('./src/utils/algolia')
 
 require('dotenv').config()
 
-
 module.exports = {
   siteMetadata: {
-    title: `testing`,
+    title: `jumpsuit.life`,
     description: `Powered by Gatsby and Drupal`,
     author: `broeker@gmail.com`,
-    slogan: 'Drupal, Gatsby, and the jumpsuit lifestyle.'
+    sloganx: '...',
+    slogan: 'DRUPAL, GATSBY, AND HOW THE WEST WAS WON.'
   },
   plugins: [
          

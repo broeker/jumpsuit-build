@@ -119,10 +119,4 @@ class Blog extends React.Component {
     }
 }
 
-
-
-
-
-
-
 export default withStyles(styles)(Blog);

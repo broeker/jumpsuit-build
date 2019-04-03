@@ -32,7 +32,7 @@ class MarkdownPage extends React.Component {
 <AuthorDetails
   changed={this.props.changed}
   />
-<Typography className={classes.foo} gutterBottom dangerouslySetInnerHTML={{ __html: this.props.html }} />  
+<Typography gutterBottom dangerouslySetInnerHTML={{ __html: this.props.html }} />  
     
 </>
      )

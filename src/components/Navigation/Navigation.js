@@ -59,6 +59,12 @@ const styles = theme => ({
      headroom: {
       marginBottom: '3em',
      },
+     slogan: {
+       color: 'white',
+       fontWeight: 700,
+        color: 'rgba(0, 0, 0, 0.54)',
+        opacity: '.5',
+     }
      });
 
 function Navigation(props) {
@@ -68,16 +74,14 @@ function Navigation(props) {
     
       <Headroom className={classes.headroom}>
       <AppBar position="static" color="primary">
-        <Toolbar color="primary">
-<NavigationDrawer 
-              />
-            <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
-            style={{ textDecoration: 'none', fontFamily: 'Baloo Bhaina' }} to={"/"}>{props.siteTitle}</Link>
-            </Typography>
-
-              
-
-               <Search collapse indices={searchIndices} />
+        <Toolbar>
+        <NavigationDrawer 
+          />
+        <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
+          style={{ textDecoration: 'none', fontFamily: 'Baloo Bhaina' }} to={"/"}>{props.siteTitle}</Link>
+        </Typography>
+        <Typography variant="caption" className={classes.slogan}>{props.siteSlogan}</Typography>
+        <Search collapse indices={searchIndices} />
         </Toolbar>
       </AppBar>
     </Headroom>

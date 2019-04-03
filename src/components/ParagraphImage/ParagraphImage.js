@@ -16,7 +16,6 @@ const styles = theme => ({
   },
   caption: {
     fontSize: 14,
-    color: theme.status.danger,
   }
 
 });

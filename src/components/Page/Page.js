@@ -94,7 +94,6 @@ return (
 </Grid>
 </Grid>
 
-<Grid className = { classes.indent } > { this.renderElement() } </Grid>
   
     
 </>
