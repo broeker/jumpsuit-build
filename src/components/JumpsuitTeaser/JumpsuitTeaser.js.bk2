@@ -1,0 +1,88 @@
+import React from 'react'
+import { StaticQuery, graphql } from "gatsby"
+import { Link } from 'gatsby'
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Img from 'gatsby-image';
+
+import VideoModal from '../../components/VideoModal/VideoModal';
+
+import Fade from '@material-ui/core/Fade';
+import { mdiArrowRightBoldCircle} from '@mdi/js'
+import Icon from '@mdi/react'
+import Grid from '@material-ui/core/Grid';
+
+const styles = theme => ({
+  root: {
+    color: '#37474F',
+    height: 'auto',
+  },
+  icon: {
+    vertialAlign: 'bottom',
+    textAlign: 'right',
+  },
+  card: {
+    height: '100%',
+    padding: 0,
+    backgroundColor: 'red',
+  },
+  imageone: {
+    marginBottom: '2em',
+  }
+
+});
+
+
+
+const JumpsuitTeaser = ({ data }) => (
+    
+    <>
+
+<Img fluid={data.imageTwo.childImageSharp.fluid} />
+<CardActionArea 
+        //onMouseEnter={this.handleChange}
+        //onMouseLeave={this.handleChange}
+       style={{ textDecoration: 'none' }}
+       classes={{
+      }} 
+       >
+
+      <Link style={{ textDecoration: 'none'}} to='/'>
+        <Card>
+            <CardContent>
+
+            <Typography variant="h6">HIGH VOLTAGE</Typography>
+            <Typography variant="body2" gutterTop>
+             Jumpsuit is a highly-opinionated project using Gatsby and Drupal to build a better web. We are not only building the fastest and coolest websites
+            on the planet, we are making the world a better place.  
+            </Typography>
+
+           <VideoModal />
+            
+            </CardContent>
+          </Card>
+        </Link>
+      </CardActionArea>
+    </>
+)
+
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query HeadingQuery {
+        imageTwo: file(relativePath: { eq: "doit.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+      }
+    `}
+    render={data => <JumpsuitTeaser data={data} {...props} />}
+    
+  />
+)

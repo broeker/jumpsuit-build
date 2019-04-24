@@ -1,13 +1,7 @@
 import React from 'react';
-
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import { withStyles } from '@material-ui/core/styles';
-
 import Grid from '@material-ui/core/Grid'; 
 import Typography from '@material-ui/core/Typography';
-import 'typeface-lalezar';
-
 
 const year = new Date().getFullYear();
 
@@ -16,11 +10,12 @@ const styles = theme => ({
     backgroundColor: theme.palette.secondary.main,
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 8,
-    color: theme.custom.TextSecondary,
+    color: theme.foo.foobar,
     marginTop: theme.spacing.unit * 12,
   },
   quote: {
-    color: theme.custom.TextSecondary,
+
+    color: theme.foo.foobar,
     fontSize: 18,
     fontFamily: theme.custom.logofont,
     paddingLeft: theme.spacing.unit * 2,

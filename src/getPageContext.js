@@ -4,7 +4,6 @@ import { SheetsRegistry } from 'jss';
 import { createMuiTheme, createGenerateClassName } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
 import blue from '@material-ui/core/colors/blue';
-import grey from '@material-ui/core/colors/grey';
 import 'typeface-lalezar';
 
 import 'typeface-roboto';
@@ -19,6 +18,9 @@ const theme = createMuiTheme({
     TextSecondary: '#ffffff',
     secondarytext: '#666',
   },
+  foo: {
+    foobar: 'green',
+  },
   palette: {
     primary: {
       light: orange[300],
@@ -30,9 +32,6 @@ const theme = createMuiTheme({
       main: blue[500],
       dark: blue[700],
     },
-    //error: {
-    //  main: blue[500],
-    //},
   },
 
   typography: {

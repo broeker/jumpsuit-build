@@ -11,7 +11,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Icon from '@mdi/react'
-import { mdiFlash } from '@mdi/js'
 import { mdiHeart } from '@mdi/js'
 
 import Typography from '@material-ui/core/Typography';
@@ -56,6 +55,13 @@ const styles = {
  },
  button: {
   fontSize: 14,
+ },
+ toggle: {
+   opacity: '.6',
+   '&:hover': {
+        color: 'white',
+      opacity: '1',
+        }
  }
 };
 
@@ -110,19 +116,13 @@ class NavigationDrawer extends React.Component {
             <ListItemText classes={{ primary: classes.buttontext }} primary="Jumpsuit life" />
           </ListItem>
         </List>
-
-    
-
       </div>
-
-
-
-           </>
+      </>
     );
 
         return (
       <>
-      <IconButton onClick={this.toggleDrawer('left', true)}><Icon path={mdiMenu} size={1.1} color="white"  /></IconButton>
+      <IconButton onClick={this.toggleDrawer('left', true)}><Icon path={mdiMenu} size={1.1} color="white" className={classes.toggle}  /></IconButton>
       <Drawer anchor="left" open={this.state.left} onClose={this.toggleDrawer('left', false)}>
           <div
             tabIndex={0}

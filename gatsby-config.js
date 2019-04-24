@@ -8,7 +8,7 @@ module.exports = {
     description: `Powered by Gatsby and Drupal`,
     author: `broeker@gmail.com`,
     sloganx: '...',
-    slogan: 'DRUPAL, GATSBY, AND HOW THE WEST WAS WON.'
+    slogan: 'and you shall know me by the color of my jumpsuit'
   },
   plugins: [
          
@@ -17,7 +17,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-remark-copy-linked-files`,
     `gatsby-plugin-styled-components`,
-    
         
     // SOURCE FILSYSTEM
     {
@@ -36,9 +35,7 @@ module.exports = {
           name: "markdown-pages",
         },
     },
-    
 
-        
     // TRANSFORMER REMARK
     {
       resolve: 'gatsby-transformer-remark',

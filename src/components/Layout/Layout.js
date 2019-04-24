@@ -6,7 +6,6 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
 import Navigation from '../Navigation/Navigation';
@@ -15,8 +14,6 @@ import withRoot from '../../withRoot';
 import Footer from '../Footer/Footer'
 import 'typeface-lalezar';
 import "./Layout.css"
-//import Header from "./header"
-//import "./layout.css"
 
 const styles = theme => ({
   root: {
@@ -37,7 +34,7 @@ const styles = theme => ({
 });
 
 const Layout = (props) => {
-  const {children, classes} = props;
+const {children, classes} = props;
 
   return (
     <StaticQuery
@@ -56,8 +53,8 @@ const Layout = (props) => {
           <Helmet
             title={data.site.siteMetadata.title}
             meta={[
-              {name: 'description', content: 'Sample'},
-              {name: 'keywords', content: 'sample, something'},
+              {name: 'description', content: 'Drupal, Gatsby, and how the west was won.'},
+              {name: 'keywords', content: 'Drupal, Gatsby, Headless CMS, Decoupled, React, GraphQL'},
             ]}
           >
             <html lang="en"/>
@@ -74,14 +71,10 @@ const Layout = (props) => {
             </div>
           </div>
           <Footer />
-                    </>
-      )}
+        </>
+    )}
     />
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default withRoot(withStyles(styles)(Layout));

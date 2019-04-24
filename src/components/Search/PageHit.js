@@ -1,5 +1,5 @@
 import React from "react"
-import { Highlight, Snippet, Hits } from "react-instantsearch-dom"
+import { Highlight, Snippet } from "react-instantsearch-dom"
 import { Link } from "gatsby"
 
 const PageHit = clickHandler => ({ hit }) => (

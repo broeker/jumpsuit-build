@@ -50,20 +50,21 @@ const styles = theme => ({
     },
     myTextStyle: {
       color: 'white',
+      opacity: '.6',
       textDecoration: 'none',
       '&:hover': {
-        color: 'rgba(0, 0, 0, 0.54)',
-        opacity: '.3'
+        color: 'white',
+      opacity: '1',
         }
      },
      headroom: {
       marginBottom: '3em',
      },
      slogan: {
-       color: 'white',
        fontWeight: 700,
-        color: 'rgba(0, 0, 0, 0.54)',
-        opacity: '.5',
+        color: 'white',
+        opacity: '1',
+        paddingRight: '1em',
      }
      });
 
@@ -80,7 +81,6 @@ function Navigation(props) {
         <Typography variant="h6" className={classes.logo}> <Link className={classes.myTextStyle}
           style={{ textDecoration: 'none', fontFamily: 'Baloo Bhaina' }} to={"/"}>{props.siteTitle}</Link>
         </Typography>
-        <Typography variant="caption" className={classes.slogan}>{props.siteSlogan}</Typography>
         <Search collapse indices={searchIndices} />
         </Toolbar>
       </AppBar>
