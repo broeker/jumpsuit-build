@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+//import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+/*
 function SEO({ description, lang, meta, keywords, title }) {
   const { site } = useStaticQuery(
     graphql`
@@ -23,8 +23,7 @@ function SEO({ description, lang, meta, keywords, title }) {
       }
     `
   )
-
-  const metaDescription = description || site.siteMetadata.description
+  //const metaDescription = description || site.siteMetadata.description
 
   return (
    null
@@ -46,3 +45,5 @@ SEO.propTypes = {
 }
 
 export default SEO
+
+*/

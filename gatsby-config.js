@@ -16,8 +16,26 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-remark-copy-linked-files`,
+    'gatsby-plugin-top-layout', 
+    // MATERIAL UI
+     {
+      resolve: `gatsby-plugin-material-ui`,
+      // If you want to use styled components, in conjunction to Material-UI, you should: 
+      // - Change the injection order
+      // - Add the plugin
+      options: {
+        stylesProvider: {
+           injectFirst: true,
+        },
+      },
+    },
+    
+    // STYLED COMPONENTS
     `gatsby-plugin-styled-components`,
-        
+    
+    // REACT HELMET
+    'gatsby-plugin-react-helmet',
+
     // SOURCE FILSYSTEM
     {
       resolve: `gatsby-source-filesystem`,

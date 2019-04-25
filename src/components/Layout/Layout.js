@@ -9,7 +9,6 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Navigation from '../Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
-import withRoot from '../../withRoot';
 import Footer from '../Footer/Footer'
 import 'typeface-lalezar';
 import "./Layout.css"
@@ -49,18 +48,14 @@ const {children, classes} = props;
       `}
       render={data => (
         <>
-            <html lang="en"/>
-          <div className={classes.root}>
-            <Navigation 
-              siteTitle={data.site.siteMetadata.title}
-              siteSlogan={data.site.siteMetadata.slogan}
-              />
-            <div className={classes.main}>
-            <main>
-              {children}
-            </main>
-            </div>
-          </div>
+          <Navigation 
+            siteTitle={data.site.siteMetadata.title}
+            siteSlogan={data.site.siteMetadata.slogan}
+          />
+          xxxx
+          <main>
+            {children}
+          </main>
           <Footer />
         </>
     )}
@@ -68,4 +63,4 @@ const {children, classes} = props;
   )
 }
 
-export default withRoot(withStyles(styles)(Layout));
+export default withStyles(styles)(Layout);
