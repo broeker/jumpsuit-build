@@ -1,7 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-
-import Helmet from 'react-helmet';
 import Layout from '../components/Layout/Layout';
 import { withStyles } from '@material-ui/core/styles';
 import Page from '../components/Page/Page';
@@ -26,12 +24,6 @@ const pageTemplate = (props) => {
 
     return (
        <Layout>
-       <Helmet
-        title={page.title}
-        meta={[
-          {name: 'description', content: page.title},
-        ]}
-      />
       
       <div className={classes.root}>
         <Page

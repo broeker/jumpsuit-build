@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import Layout from '../components/Layout/Layout'
 import { withStyles } from '@material-ui/core/styles';
 import Blog from '../components/Blog/Blog';
@@ -26,12 +25,6 @@ const blogTemplate = (props) => {
 
     return (
         <Layout className={classes.Root}>
-       <Helmet
-        title={blog.title}
-        meta={[
-          {name: 'description', content: blog.title},
-        ]}
-      />
        <div className={classes.root}>
         <Blog
               title={blog.title}

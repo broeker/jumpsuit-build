@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import MarkdownPage from '../components/MarkdownPage/MarkdownPage'
 
-import Helmet from 'react-helmet';
 import Layout from '../components/Layout/Layout';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -19,12 +18,6 @@ const mdTemplate = (props) => {
 
     return (
         <Layout>
-       <Helmet
-        title={frontmatter.title}
-        meta={[
-          {name: 'description', data: frontmatter.title},
-        ]}
-      />
       
        <div className={classes.root}>
         <MarkdownPage

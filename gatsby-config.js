@@ -62,9 +62,6 @@ module.exports = {
       },
     },  
     
-    // HELMET
-    `gatsby-plugin-react-helmet`,
-
     // SOURCE DRUPAL
     {
       resolve: 'gatsby-source-drupal',

@@ -6,7 +6,6 @@
  */
 
 import React from "react"
-import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
 import Navigation from '../Navigation/Navigation';
 import { withStyles } from '@material-ui/core/styles';
@@ -50,15 +49,7 @@ const {children, classes} = props;
       `}
       render={data => (
         <>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              {name: 'description', content: 'Drupal, Gatsby, and how the west was won.'},
-              {name: 'keywords', content: 'Drupal, Gatsby, Headless CMS, Decoupled, React, GraphQL'},
-            ]}
-          >
             <html lang="en"/>
-          </Helmet>
           <div className={classes.root}>
             <Navigation 
               siteTitle={data.site.siteMetadata.title}
