@@ -69,7 +69,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-drupal',
       options: {
-        baseUrl: 'http://jumpsuit.docksal/',
+        baseUrl: 'http://dev-jumpsuit.pantheonsite.io/',
         apiBase: 'jsonapi', // endpoint of Drupal server
       },
     },

@@ -8,7 +8,6 @@ import BlogCard from '../components/BlogCard/BlogCard'
 import LinkBlog from '../components/LinkBlog/LinkBlog'
 import jumpsuit from '../images/jumpsuit01.svg'
 import JumpsuitTeaser from '../components/JumpsuitTeaser/JumpsuitTeaser'
-import Game from '../components/Game/Game'
 import 'typeface-roboto';
 
 import Img from 'gatsby-image';
