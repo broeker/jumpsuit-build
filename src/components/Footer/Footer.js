@@ -10,12 +10,12 @@ const styles = theme => ({
     backgroundColor: theme.palette.secondary.main,
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 8,
-    color: theme.foo.foobar,
+    color: '#fff',
     marginTop: theme.spacing.unit * 12,
   },
   quote: {
 
-    color: theme.foo.foobar,
+    color: '#fff',
     fontSize: 18,
     fontFamily: theme.custom.logofont,
     paddingLeft: theme.spacing.unit * 2,

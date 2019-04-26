@@ -11,12 +11,6 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-  indent: {
-    width: theme.indent.indentwidth,
-    marginLeft: theme.indent.indentleft,
-    marginRight: theme.indent.indentright,
-    marginTop: theme.indent.indenttop,
-  },
   hero: {
     padding: '0em',
   }
